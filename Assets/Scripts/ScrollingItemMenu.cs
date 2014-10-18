@@ -47,14 +47,14 @@ public class ScrollingItemMenu : MonoBehaviour
 	}
 	// Use this for initialization
 	void Start () {
-		//Must always have at least 3 items and the same number of sprites + values
+		//Must always have at least 1 item and the same number of sprites + values
 
 		if (spriteList.Count != values.Count) 
 		{
 			//ERROR
 		}
 
-		if (spriteList.Count < 3) 
+		if (spriteList.Count < 1) 
 		{
 			//ERROR
 		}
@@ -120,40 +120,46 @@ public class ScrollingItemMenu : MonoBehaviour
 	{
 		int fps = 25;
 
-		//calculate indices to display
-		int leftleftIndex;
-		leftleftIndex = selectedIndex - 2;
-		if (leftleftIndex < 0 )
+		if (spriteList.Count == 1) 
 		{
-			leftleftIndex = spriteList.Count + selectedIndex- 2;
-		}
-
-		int leftIndex = selectedIndex - 1;
-		if (leftIndex < 0) 
+			slotHiddenLeftSpriteRenderer.sprite = spriteList [0];
+			slot1SpriteRenderer.sprite = spriteList [0];
+			slot2SpriteRenderer.sprite = spriteList [0];
+			slot3SpriteRenderer.sprite = spriteList [0];
+			slotHiddenRightSpriteRenderer.sprite = spriteList [0];	
+		} 
+		else 
 		{
-			leftIndex = spriteList.Count - 1;
-		}
-		
-		int centerIndex = selectedIndex;
-		
-		int rightIndex = selectedIndex +1;
-		if (rightIndex >= spriteList.Count) 
-		{
-			rightIndex = 0;
-		}
+			//calculate indices to display
+			int leftleftIndex;
+			leftleftIndex = selectedIndex - 2;
+			if (leftleftIndex < 0) {
+					leftleftIndex = spriteList.Count + selectedIndex - 2;
+			}
 
-		int rightrightIndex = selectedIndex + 2;
-		if (rightrightIndex >= spriteList.Count)
-		{
-			rightrightIndex = selectedIndex - spriteList.Count + 2;
+			int leftIndex = selectedIndex - 1;
+			if (leftIndex < 0) {
+					leftIndex = spriteList.Count - 1;
+			}
+
+			int centerIndex = selectedIndex;
+
+			int rightIndex = selectedIndex + 1;
+			if (rightIndex >= spriteList.Count) {
+					rightIndex = 0;
+			}
+
+			int rightrightIndex = selectedIndex + 2;
+			if (rightrightIndex >= spriteList.Count) {
+					rightrightIndex = selectedIndex - spriteList.Count + 2;
+			}
+
+			slotHiddenLeftSpriteRenderer.sprite = spriteList [leftleftIndex];
+			slot1SpriteRenderer.sprite = spriteList [leftIndex];
+			slot2SpriteRenderer.sprite = spriteList [centerIndex];
+			slot3SpriteRenderer.sprite = spriteList [rightIndex];
+			slotHiddenRightSpriteRenderer.sprite = spriteList [rightrightIndex];
 		}
-
-		slotHiddenLeftSpriteRenderer.sprite = spriteList [leftleftIndex];
-		slot1SpriteRenderer.sprite = spriteList[leftIndex];
-		slot2SpriteRenderer.sprite = spriteList[centerIndex];
-		slot3SpriteRenderer.sprite = spriteList[rightIndex];
-		slotHiddenRightSpriteRenderer.sprite = spriteList [rightrightIndex];
-
 		//Animation
 		//TODO: this is assuming a constant "Y" value for all slots
 		//TODO: this is assuming a constant spacing between all slots
