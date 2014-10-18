@@ -1,0 +1,64 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BrewShop\BrewShopInput.cs">
+    <Files>
+      <File FileName="Assets\Scripts\BrewShop\BrewShopInput.cs" Line="33" Column="3" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopSetup.cs" Line="26" Column="61" />
+      <File FileName="Assets\Scripts\Options\OptionsInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GroceryStore\GrocerySetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Carnival\CarnivalInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Home\HomeInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PubLane\PubLaneInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RealEstate\RealEstateSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RealEstate\RealEstateInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ToolStore\ToolStoreInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ToolStore\ToolStoreSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PubLane\PubLaneSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Home\HomeSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GroceryStore\GroceryInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Carnival\CarnivalLoad.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="46" Column="1" />
+      <File FileName="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" Line="22" Column="46" />
+      <File FileName="Assets\Scripts\GameData.cs" Line="16" Column="38" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True">
+              <Node name="BrewShop" expanded="True">
+                <Node name="BrewShopInput.cs" selected="True" />
+              </Node>
+              <Node name="Carnival" expanded="True" />
+              <Node name="CharacterSelectionScreen" expanded="True" />
+              <Node name="CityMapScreen" expanded="True" />
+              <Node name="GroceryStore" expanded="True" />
+              <Node name="Home" expanded="True" />
+              <Node name="IntroVideoScreen" expanded="True" />
+              <Node name="LoadingScreen" expanded="True" />
+              <Node name="MainMenuScreen" expanded="True" />
+              <Node name="Options" expanded="True" />
+              <Node name="PubLane" expanded="True" />
+              <Node name="RealEstate" expanded="True" />
+              <Node name="ToolStore" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>GameObject.Find ("BigBox").GetComponent&lt;SpriteRenderer&gt; ()</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Pierre\Documents\BrewMaster\Assets\Scripts\BrewShop\BrewShopInput.cs" line="89" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
