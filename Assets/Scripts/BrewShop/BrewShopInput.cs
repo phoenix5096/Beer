@@ -123,6 +123,10 @@ public class BrewShopInput : MonoBehaviour {
 			sprites.AddRange(setupScript.yeastSprites);
 		}
 
+		if (itemMenu.selectedIndex > values.Count - 1)
+		{
+			itemMenu.selectedIndex = 0;
+		}
 		itemMenu.values = values;
 		itemMenu.spriteList = sprites; 
 

@@ -4,93 +4,50 @@ using System.Collections.Generic;
 
 public class ScrollingItemMenu : MonoBehaviour 
 {
-	public GameObject slot1;
-	public GameObject slot2;
-	public GameObject slot3;
-	private GameObject slotHiddenRight;
-	private GameObject slotHiddenLeft;
-
+	//game object place holders where the sprites will be drawn.
+	public List<GameObject> slots;
 	public List<Sprite> spriteList;
 	public List<string> values;
 	public int selectedIndex = 0;
-
-	SpriteRenderer slot1SpriteRenderer;
-	SpriteRenderer slot2SpriteRenderer;
-	SpriteRenderer slot3SpriteRenderer;
-	SpriteRenderer slotHiddenRightSpriteRenderer;
-	SpriteRenderer slotHiddenLeftSpriteRenderer;
+	public int masterSlotIndex = 1;
+	public int fps = 25;
 
 	private bool ScrollingRight = false;
 	private bool ScrollingLeft = false;
+	private List<SpriteRenderer> slotRenderers = new List<SpriteRenderer> ();
+	private List<Vector3> slotOriginalPositions = new List<Vector3> ();
+	private List<Vector3> slotOriginalScales = new List<Vector3> ();
 
-	private Vector3 slot1OriginalPosition;
-	private Vector3 slot2OriginalPosition;
-	private Vector3 slot3OriginalPosition;
-	private Vector3 slotHiddenRightOriginalPosition;
-	private Vector3 slotHiddenLeftOriginalPosition;
+	//The distance between Sprites (from left to right)  
+	//ex: slotDistances[0] = distance between slots[0] and slots[1]
+	private List<Vector3> slotDistances = new List<Vector3> ();
 
-	private Vector3 slot1OriginalScale;
-	private Vector3 slot2OriginalScale;
-	private Vector3 slot3OriginalScale;
-	private Vector3 slotHiddenRightOriginalScale;
-	private Vector3 slotHiddenLeftOriginalScale;
-
-	private float deltaDistance;
-	
-	private float slot1deltaScale;
-	private float slot2deltaScale;
-	//no scaling for all other transitions
+	//The scaling difference between Sprites (from left to right)  
+	//ex: slotDeltaScales[0] = scale difference between slots[0] and slots[1]
+	private List<Vector3> slotDeltaScales = new List<Vector3> ();
 
 	public string getSelectedValue()
 	{
 		return values [selectedIndex];
 	}
+
 	// Use this for initialization
-	void Start () {
-		//Must always have at least 1 item and the same number of sprites + values
-
-		if (spriteList.Count != values.Count) 
+	void Start () 
+	{
+		//store all required information about the menu slots
+		for (int i = 0; i < slots.Count; i++) 
 		{
-			//ERROR
+			slotRenderers.Add(slots[i].GetComponent<SpriteRenderer> ());
+			slotOriginalPositions.Add (new Vector3 (slots [i].transform.position.x, slots [i].transform.position.y, slots [i].transform.position.z));
+			slotOriginalScales.Add (new Vector3( slots[i].transform.localScale.x, slots[i].transform.localScale.y,  slots[i].transform.localScale.z));
 		}
 
-		if (spriteList.Count < 1) 
+		//store all required information about the menu slots
+		for (int i = 0; i < slots.Count-1; i++) 
 		{
-			//ERROR
+			slotDistances.Add (slotOriginalPositions[i+1] - slotOriginalPositions[i]);
+			slotDeltaScales.Add (slotOriginalScales[i+1] - slotOriginalScales[i]);
 		}
-
-		slot1SpriteRenderer = slot1.GetComponent<SpriteRenderer> ();
-		slot2SpriteRenderer = slot2.GetComponent<SpriteRenderer> ();
-		slot3SpriteRenderer = slot3.GetComponent<SpriteRenderer> ();
-
-		slot1OriginalPosition = new Vector3( slot1.transform.position.x, slot1.transform.position.y, 1);
-		slot2OriginalPosition = new Vector3( slot2.transform.position.x, slot2.transform.position.y, 1);
-		slot3OriginalPosition = new Vector3( slot3.transform.position.x, slot3.transform.position.y, 1);
-
-		slot1OriginalScale = new Vector3( slot1.transform.localScale.x, slot1.transform.localScale.y, 1);
-		slot2OriginalScale = new Vector3( slot2.transform.localScale.x, slot2.transform.localScale.y, 1);
-		slot3OriginalScale = new Vector3( slot3.transform.localScale.x, slot3.transform.localScale.y, 1);
-
-		deltaDistance = slot2.transform.position.x - slot1.transform.position.x;
-
-		slot1deltaScale = slot2.transform.localScale.x - slot1.transform.localScale.x;
-		slot2deltaScale = slot3.transform.localScale.x - slot2.transform.localScale.x;
-
-		//create the hidden Left Slot
-		slotHiddenLeft = new GameObject ();
-		slotHiddenLeft.transform.position = new Vector3 (slot1OriginalPosition.x - deltaDistance, slot1OriginalPosition.y, 1);
-		slotHiddenLeft.AddComponent<SpriteRenderer> ();
-		slotHiddenLeftSpriteRenderer = slotHiddenLeft.GetComponent<SpriteRenderer> ();
-		slotHiddenLeftOriginalPosition = new Vector3( slotHiddenLeft.transform.position.x, slotHiddenLeft.transform.position.y, 1); 
-		slotHiddenLeftOriginalScale = new Vector3( slotHiddenLeft.transform.localScale.x, slotHiddenLeft.transform.localScale.y, 1);
-
-		//create the hidden Right Slot
-		slotHiddenRight = new GameObject ();
-		slotHiddenRight.transform.position = new Vector3 (slot3OriginalPosition.x + deltaDistance, slot3OriginalPosition.y, 1);
-		slotHiddenRight.AddComponent<SpriteRenderer> ();
-		slotHiddenRightSpriteRenderer = slotHiddenRight.GetComponent<SpriteRenderer> ();
-		slotHiddenRightOriginalPosition = new Vector3( slotHiddenRight.transform.position.x, slotHiddenRight.transform.position.y, 1); 
-		slotHiddenRightOriginalScale = new Vector3( slotHiddenRight.transform.localScale.x, slotHiddenRight.transform.localScale.y, 1);
 	}
 	
 
@@ -118,264 +75,151 @@ public class ScrollingItemMenu : MonoBehaviour
 
 	public void OnGUI()
 	{
-		int fps = 25;
+		//Simple rules to follow:
+		//-Must always have at least 3 slots (2 of them off screen and 1 on screen)
+		//-Must always have at least 1 sprite
+		//-The master slot must not be the first or last item (they are reserved for off-screen buffering)
+		if (slots.Count < 3 || spriteList.Count < 1 || masterSlotIndex < 1 || masterSlotIndex > slots.Count -2 ) 
+		{
+			//TODO: throw exception?
+			return;
+		}
+		
+		List<int> spriteIndicesDisplayed = new List<int>();
+
+		//pre-populate the list 
+		for (int i = 0; i< slots.Count; i++)
+		{
+			spriteIndicesDisplayed.Add (selectedIndex);
+		}
 
 		if (spriteList.Count == 1) 
 		{
-			slotHiddenLeftSpriteRenderer.sprite = spriteList [0];
-			slot1SpriteRenderer.sprite = spriteList [0];
-			slot2SpriteRenderer.sprite = spriteList [0];
-			slot3SpriteRenderer.sprite = spriteList [0];
-			slotHiddenRightSpriteRenderer.sprite = spriteList [0];	
+			//When we have only one sprite, no math is required... it is the only one available to display
 		} 
 		else 
 		{
-			//calculate indices to display
-			int leftleftIndex;
-			leftleftIndex = selectedIndex - 2;
-			if (leftleftIndex < 0) {
-					leftleftIndex = spriteList.Count + selectedIndex - 2;
+			spriteIndicesDisplayed[masterSlotIndex] = selectedIndex;
+
+			//this loop will go through all the slots to the right of the master slot (except the last slot which is only for off screen buffering)
+			for (int i = masterSlotIndex+1; i < slots.Count; i++)
+			{
+				spriteIndicesDisplayed[i] = spriteIndicesDisplayed[i-1] + 1;
+				if (spriteIndicesDisplayed[i] > spriteList.Count-1)
+				{
+					spriteIndicesDisplayed[i] = 0;
+				}
 			}
 
-			int leftIndex = selectedIndex - 1;
-			if (leftIndex < 0) {
-					leftIndex = spriteList.Count - 1;
+			//this loop will go through all the slots to the left of the master slot (except the last slot which is only for off screen buffering)
+
+			for (int i = masterSlotIndex-1; i >= 0; i--)
+			{
+				spriteIndicesDisplayed[i] = spriteIndicesDisplayed[i+1] -1 ;
+				if (spriteIndicesDisplayed[i] < 0)
+				{
+					spriteIndicesDisplayed[i] = spriteList.Count-1;
+				}
 			}
 
-			int centerIndex = selectedIndex;
-
-			int rightIndex = selectedIndex + 1;
-			if (rightIndex >= spriteList.Count) {
-					rightIndex = 0;
-			}
-
-			int rightrightIndex = selectedIndex + 2;
-			if (rightrightIndex >= spriteList.Count) {
-					rightrightIndex = selectedIndex - spriteList.Count + 2;
-			}
-
-			slotHiddenLeftSpriteRenderer.sprite = spriteList [leftleftIndex];
-			slot1SpriteRenderer.sprite = spriteList [leftIndex];
-			slot2SpriteRenderer.sprite = spriteList [centerIndex];
-			slot3SpriteRenderer.sprite = spriteList [rightIndex];
-			slotHiddenRightSpriteRenderer.sprite = spriteList [rightrightIndex];
+			//set the buffered slot's indices:
+			//spriteIndicesDisplayed[0] = spriteIndicesDisplayed[spriteIndicesDisplayed.Count-2];
+			//spriteIndicesDisplayed[spriteIndicesDisplayed.Count-1] = spriteIndicesDisplayed[1];
 		}
-		//Animation
-		//TODO: this is assuming a constant "Y" value for all slots
-		//TODO: this is assuming a constant spacing between all slots
-		//TODO: this is assuming the following Postition on the UI:  Slot1, Slot2, Slot3
-		//TODO: this is assuming slot 2 is scaled bigger than slot1 and 3,
-		//TODO: this is assuming slot1 and 3 are the same size
-		//TODO: this is assuming the X and Y scaling are the same for all slots
-		if (ScrollingRight) 
+
+		for (int i = 0; i<slots.Count; i++)
 		{
-			//hidden slot left moves right
-			if (slotHiddenLeft.transform.position.x < slot1OriginalPosition.x)
+			slotRenderers[i].sprite = spriteList[spriteIndicesDisplayed[i]];
+		}
+
+		Animate();
+	}
+
+	private void Animate()
+	{
+		//TODO: this is assuming the order of the slots in the list is from left to right on the screen
+		if (ScrollingLeft) 
+		{
+			for (int i = slots.Count-1; i > 0; i--)
 			{
-				//adjust Size
-				float newX = slotHiddenLeft.transform.position.x + deltaDistance/fps;
-				float newY = slotHiddenLeft.transform.position.y;
-				slotHiddenLeft.transform.position = new Vector3(newX,newY,1);
-				if (slotHiddenLeft.transform.position.x > slot1OriginalPosition.x)
-				{
-					slotHiddenLeft.transform.position = slot1OriginalPosition;
-				}
-				
-				//no scaling required
-			}
+				float newPosX = slots[i].transform.position.x - slotDistances[i-1].x/fps;
+				float newPosY = slots[i].transform.position.y - slotDistances[i-1].y/fps;
+				float newPosZ = slots[i].transform.position.z - slotDistances[i-1].z/fps;
 
-			//slot 1 moves right
-			if (slot1.transform.position.x < slot2OriginalPosition.x)
-			{
-				//adjust Size
-				float newX = slot1.transform.position.x + deltaDistance/fps;
-				float newY = slot1.transform.position.y;
-				slot1.transform.position = new Vector3(newX,newY,1);
-				if (slot1.transform.position.x > slot2OriginalPosition.x)
-				{
-					slot1.transform.position = slot2OriginalPosition;
-				}
+				float newScaleX = slots[i].transform.localScale.x - slotDeltaScales[i-1].x/fps;
+				float newScaleY = slots[i].transform.localScale.y - slotDeltaScales[i-1].y/fps;
+				float newScaleZ = slots[i].transform.localScale.z - slotDeltaScales[i-1].z/fps;
 
-				//adjust Scale
-				newX = slot1.transform.localScale.x + slot1deltaScale/fps;
-				newY = slot1.transform.localScale.y + slot1deltaScale/fps;
-				slot1.transform.localScale = new Vector3(newX,newY,1);
+				slots[i].transform.position = new Vector3 (newPosX, newPosY, newPosZ);
+				slots[i].transform.localScale = new Vector3 (newScaleX, newScaleY, newScaleZ);
 
-				if (slot1.transform.localScale.x > slot2OriginalScale.x)
+				//make sure we do not go over
+				if (slots[i].transform.position.x <= slotOriginalPositions[i-1].x)
 				{
-					slot1.transform.localScale = slot2OriginalScale;
+					slots[i].transform.position = slotOriginalPositions[i-1];
+					slots[i].transform.localScale = slotOriginalScales[i-1];
 				}
 			}
 
-			//slot 2 moves right
-			if (slot2.transform.position.x < slot3OriginalPosition.x)
-			{
-				//adjust Size
-				float newX = slot2.transform.position.x + deltaDistance/fps;
-				float newY = slot2.transform.position.y;
-				slot2.transform.position = new Vector3(newX,newY,1);
-				if (slot2.transform.position.x > slot3OriginalPosition.x)
-				{
-					slot2.transform.position = slot3OriginalPosition;
-				}
-
-				//adjust Scale
-				newX = slot2.transform.localScale.x + slot2deltaScale/fps;
-				newY = slot2.transform.localScale.y + slot2deltaScale/fps;
-				slot2.transform.localScale = new Vector3(newX,newY,1);
-				
-				if (slot2.transform.localScale.x < slot3OriginalScale.x)
-				{
-					slot2.transform.localScale = slot3OriginalScale;
-				}
-			}
-
-			//slot3 moves off the screen
-			if (slot3.transform.position.x < slotHiddenRightOriginalPosition.x)
-			{
-				//adjust Size
-				float newX = slot3.transform.position.x + deltaDistance/fps;
-				float newY = slot3.transform.position.y;
-				slot3.transform.position = new Vector3(newX,newY,1);
-				if (slot3.transform.position.x > slotHiddenRightOriginalPosition.x)
-				{
-					slot3.transform.position = slotHiddenRightOriginalPosition;
-				}
-				
-				//no scaling required
-			}
-
-			if (slot1.transform.position == slot2OriginalPosition
-			    && slot1.transform.localScale == slot2OriginalScale)
-			    //Note: Don't care about comparing the others... they all move at the same speed anyways
+			//Check if we are done animating
+			if (slots[1].transform.position == slotOriginalPositions[0])
 			{
 				//reset the control positions
-				slotHiddenLeft.transform.position = slotHiddenLeftOriginalPosition;
-				slot1.transform.position = slot1OriginalPosition;
-				slot2.transform.position = slot2OriginalPosition;
-				slot3.transform.position = slot3OriginalPosition;
-				slotHiddenRight.transform.position = slotHiddenRightOriginalPosition;
-
-				slotHiddenLeft.transform.localScale = slotHiddenLeftOriginalScale;
-				slot1.transform.localScale = slot1OriginalScale;
-				slot2.transform.localScale = slot2OriginalScale;
-				slot3.transform.localScale = slot3OriginalScale;
-				slotHiddenRight.transform.localScale = slotHiddenRightOriginalScale;
-
-				//reload the proper images
-				selectedIndex--;
-				if (selectedIndex < 0) 
+				for (int i = 0; i<slots.Count; i++)
 				{
-					selectedIndex = spriteList.Count-1;
+					slots[i].transform.position = slotOriginalPositions[i];
+					slots[i].transform.localScale = slotOriginalScales[i];
 				}
 
-				ScrollingRight = false;
-			}
-		}
-		else if (ScrollingLeft) 
-		{
-
-			//slot 1 moves off the screen
-			if (slot1.transform.position.x > slotHiddenLeftOriginalPosition.x)
-			{
-				//adjust Size
-				float newX = slot1.transform.position.x - deltaDistance/fps;
-				float newY = slot1.transform.position.y;
-				slot1.transform.position = new Vector3(newX,newY,1);
-				if (slot1.transform.position.x < slotHiddenLeftOriginalPosition.x)
-				{
-					slot1.transform.position = slotHiddenLeftOriginalPosition;
-				}
-				
-				//no scaling required
-			}
-			
-			//slot 2 moves left
-			if (slot2.transform.position.x > slot1OriginalPosition.x)
-			{
-				//adjust Size
-				float newX = slot2.transform.position.x - deltaDistance/fps;
-				float newY = slot2.transform.position.y;
-				slot2.transform.position = new Vector3(newX,newY,1);
-				if (slot2.transform.position.x < slot1OriginalPosition.x)
-				{
-					slot2.transform.position = slot1OriginalPosition;
-				}
-				
-				//adjust Scale
-				newX = slot2.transform.localScale.x + slot2deltaScale/fps;
-				newY = slot2.transform.localScale.y + slot2deltaScale/fps;
-				slot2.transform.localScale = new Vector3(newX,newY,1);
-				
-				if (slot2.transform.localScale.x < slot1OriginalScale.x)
-				{
-					slot2.transform.localScale = slot1OriginalScale;
-				}
-			}
-			
-			//slot3 moves left
-			if (slot3.transform.position.x > slot2OriginalPosition.x)
-			{
-				//adjust Size
-				float newX = slot3.transform.position.x - deltaDistance/fps;
-				float newY = slot3.transform.position.y;
-				slot3.transform.position = new Vector3(newX,newY,1);
-				if (slot3.transform.position.x < slot2OriginalPosition.x)
-				{
-					slot3.transform.position = slot2OriginalPosition;
-				}
-				
-				//adjust Scale
-				newX = slot3.transform.localScale.x + slot1deltaScale/fps;//same as slot1... no need for another variable
-				newY = slot3.transform.localScale.y + slot1deltaScale/fps;//same as slot1... no need for another variable
-				slot3.transform.localScale = new Vector3(newX,newY,1);
-				
-				if (slot3.transform.localScale.x > slot2OriginalScale.x)
-				{
-					slot3.transform.localScale = slot2OriginalScale;
-				}
-			}
-			
-			//slot 1 moves off the screen
-			if (slotHiddenRight.transform.position.x > slot3OriginalPosition.x)
-			{
-				//adjust Size
-				float newX = slotHiddenRight.transform.position.x - deltaDistance/fps;
-				float newY = slotHiddenRight.transform.position.y;
-				slotHiddenRight.transform.position = new Vector3(newX,newY,1);
-				if (slotHiddenRight.transform.position.x < slot3OriginalPosition.x)
-				{
-					slotHiddenRight.transform.position = slot3OriginalPosition;
-				}
-				
-				//no scaling required
-			}
-			
-			if (slot2.transform.position == slot1OriginalPosition
-			    && slot2.transform.localScale == slot1OriginalScale)
-				//Note: Don't care about comparing the others... they all move at the same speed anyways
-			{
-				//reset the control positions
-				slotHiddenLeft.transform.position = slotHiddenLeftOriginalPosition;
-				slot1.transform.position = slot1OriginalPosition;
-				slot2.transform.position = slot2OriginalPosition;
-				slot3.transform.position = slot3OriginalPosition;
-				slotHiddenRight.transform.position = slotHiddenRightOriginalPosition;
-				
-				slotHiddenLeft.transform.localScale = slotHiddenLeftOriginalScale;
-				slot1.transform.localScale = slot1OriginalScale;
-				slot2.transform.localScale = slot2OriginalScale;
-				slot3.transform.localScale = slot3OriginalScale;
-				slotHiddenRight.transform.localScale = slotHiddenRightOriginalScale;
-				
 				//reload the proper images
 				selectedIndex++;
-				if (selectedIndex >= spriteList.Count) 
-				{
+				if (selectedIndex >= spriteList.Count) {
 					selectedIndex = 0;
 				}
 				
 				ScrollingLeft = false;
+			}
+		} 
+		else if (ScrollingRight) 
+		{
+			for (int i = 0; i < slots.Count-1; i++)
+			{
+				float newPosX = slots[i].transform.position.x + slotDistances[i].x/fps;
+				float newPosY = slots[i].transform.position.y + slotDistances[i].y/fps;
+				float newPosZ = slots[i].transform.position.z + slotDistances[i].z/fps;
+				
+				float newScaleX = slots[i].transform.localScale.x + slotDeltaScales[i].x/fps;
+				float newScaleY = slots[i].transform.localScale.y + slotDeltaScales[i].y/fps;
+				float newScaleZ = slots[i].transform.localScale.z + slotDeltaScales[i].z/fps;
+				
+				slots[i].transform.position = new Vector3 (newPosX, newPosY, newPosZ);
+				slots[i].transform.localScale = new Vector3 (newScaleX, newScaleY, newScaleZ);
+				
+				//make sure we do not go over
+				if (slots[i].transform.position.x >= slotOriginalPositions[i+1].x)
+				{
+					slots[i].transform.position = slotOriginalPositions[i+1];
+					slots[i].transform.localScale = slotOriginalScales[i+1];
+				}
+			}
+			
+			//Check if we are done animating
+			if (slots[0].transform.position == slotOriginalPositions[1])
+			{
+				//reset the control positions
+				for (int i = 0; i<slots.Count; i++)
+				{
+					slots[i].transform.position = slotOriginalPositions[i];
+					slots[i].transform.localScale = slotOriginalScales[i];
+				}
+				
+				//reload the proper images
+				selectedIndex--;
+				if (selectedIndex < 0) {
+					selectedIndex = spriteList.Count - 1;
+				}
+				
+				ScrollingRight = false;
 			}
 		}
 
