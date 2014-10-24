@@ -6,7 +6,7 @@ public class ScrollingItemMenu : MonoBehaviour
 {
 	//game object place holders where the sprites will be drawn.
 	public List<GameObject> slots;
-	public List<Sprite> spriteList;
+	public List<Sprite> spriteList;//TODO: convert these 2 Lists in a dictionary of "Object","Sprite"
 	public List<string> values;
 	public int selectedIndex = 0;
 	public int masterSlotIndex = 1;

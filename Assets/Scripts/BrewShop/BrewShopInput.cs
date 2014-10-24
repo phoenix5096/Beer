@@ -7,8 +7,14 @@ public class BrewShopInput : MonoBehaviour {
 	public string ButtonId ="";
 	private BrewShopSetup setupScript;
 	ScrollingItemMenu categoryMenu;
+	ScrollingItemMenu subCategoryMenu;
 	ScrollingItemMenu itemMenu;
+	ScrollingItemMenu quantityMenu;
+
 	private string selectedCategory = string.Empty;
+	private string selectedSubCategory = string.Empty;
+	private string selectedItem = string.Empty;
+	private string selectedQuantity = string.Empty;
 
 	private void LoadComponents()
 	{
@@ -16,17 +22,28 @@ public class BrewShopInput : MonoBehaviour {
 		{
 			setupScript = GameObject.Find ("SceneLoad").GetComponent<BrewShopSetup> ();
 		}
-		
+
 		if (categoryMenu == null) 
 		{
 			categoryMenu = GameObject.Find ("IngredientTypeScrollingList").GetComponent<ScrollingItemMenu> ();
 		}
-		
+
+		if (subCategoryMenu == null) 
+		{
+			subCategoryMenu = GameObject.Find ("IngredientSubTypeScrollingList").GetComponent<ScrollingItemMenu> ();
+		}
+
 		if (itemMenu == null) 
 		{
 			itemMenu = GameObject.Find ("IngredientScrollingList").GetComponent<ScrollingItemMenu> ();
 		}
+
+		if (quantityMenu == null) 
+		{
+			quantityMenu = GameObject.Find ("QuantityScrollingList").GetComponent<ScrollingItemMenu> ();
+		}
 	}
+
 	void OnMouseUp()
 	{
 		LoadComponents ();
@@ -48,6 +65,14 @@ public class BrewShopInput : MonoBehaviour {
 		{
 			ScrollCategoryLeft ();
 		}
+		else if (ButtonId == "NextSubCategory") 
+		{
+			ScrollSubCategoryRight ();
+		}
+		else if (ButtonId == "PrevSubCategory") 
+		{
+			ScrollSubCategoryLeft ();
+		}
 		else if (ButtonId == "NextItem") 
 		{
 			ScrollItemRight ();
@@ -55,6 +80,14 @@ public class BrewShopInput : MonoBehaviour {
 		else if (ButtonId == "PrevItem") 
 		{
 			ScrollItemLeft ();
+		}
+		else if (ButtonId == "NextQty") 
+		{
+			ScrollQtyRight ();
+		}
+		else if (ButtonId == "PrevQty") 
+		{
+			ScrollQtyLeft ();
 		}
 	}
 
@@ -70,6 +103,18 @@ public class BrewShopInput : MonoBehaviour {
 		categoryMenu.ScrollLeft();
 	}
 
+	public void ScrollSubCategoryRight()
+	{
+		LoadComponents ();
+		subCategoryMenu.ScrollRight();
+	}
+	
+	public void ScrollSubCategoryLeft()
+	{
+		LoadComponents ();
+		subCategoryMenu.ScrollLeft();
+	}
+
 	public void ScrollItemRight()
 	{
 		LoadComponents ();
@@ -82,6 +127,18 @@ public class BrewShopInput : MonoBehaviour {
 		itemMenu.ScrollLeft();
 	}
 
+	public void ScrollQtyRight()
+	{
+		LoadComponents ();
+		quantityMenu.ScrollRight();
+	}
+	
+	public void ScrollQtyLeft()
+	{
+		LoadComponents ();
+		quantityMenu.ScrollLeft();
+	}
+
 	public void Update()
 	{
 		LoadComponents ();
@@ -90,46 +147,70 @@ public class BrewShopInput : MonoBehaviour {
 		if (newSelectedCategory != selectedCategory) 
 		{
 			selectedCategory = newSelectedCategory;
-			SelectAppropriateCategory (selectedCategory);
+			SelectAppropriateSubCategory ();
+		}
+
+		string newSelectedSubCategory = subCategoryMenu.getSelectedValue ();
+		if (newSelectedSubCategory != selectedSubCategory) 
+		{
+			selectedSubCategory = newSelectedSubCategory;
+			SelectAppropriateIngredient ();
+		}
+
+		string newSelectedItem = itemMenu.getSelectedValue ();
+		if (newSelectedItem != selectedItem) 
+		{
+			selectedItem = newSelectedItem;
+			SelectAppropriateQuantities ();
+		}
+
+		string newSelectedQty = quantityMenu.getSelectedValue ();
+		if (newSelectedQty != selectedQuantity) 
+		{
+			selectedQuantity = newSelectedQty;
+			//TODO: update "Cost text?"
 		}
 	}
 
-	public void SelectAppropriateCategory(string categoryValue)
+	public void SelectAppropriateSubCategory()
 	{
 		LoadComponents ();
+		Dictionary<string, BrewShopSetup.ItemSubCategory> subCategories = BrewShopSetup.ShopCategories[categoryMenu.getSelectedValue ()].SubCategories;
+		subCategoryMenu.values = new List<string>();
+		subCategoryMenu.spriteList = new List<Sprite>();
 
+		foreach (BrewShopSetup.ItemSubCategory sub in subCategories.Values)
+		{
+			subCategoryMenu.values.Add(sub.Id);
+			subCategoryMenu.spriteList.Add (sub.Icon);
+		}
+	}
 
-		List<string> values = new List<string>();
-		List<Sprite> sprites = new List<Sprite>();
+	public void SelectAppropriateIngredient()
+	{
+		LoadComponents ();
+		//TODO: need a better way to reach the sub categories, items, etc...
+		Dictionary<string, BrewShopSetup.Item> items = BrewShopSetup.ShopCategories [categoryMenu.getSelectedValue ()].SubCategories[subCategoryMenu.getSelectedValue()].Items;
+		itemMenu.values = new List<string>();
+		itemMenu.spriteList = new List<Sprite>();
+		
+		foreach (BrewShopSetup.Item it in items.Values)
+		{
+			itemMenu.values.Add(it.Id);
+			itemMenu.spriteList.Add (it.Icon);
+		}
+	}
 
-		if (categoryMenu.selectedIndex == 0)
-		{
-			values.AddRange(setupScript.hopValues);
-			sprites.AddRange(setupScript.hopSprites);
-		}
-		else 		if (categoryMenu.selectedIndex == 1) 
-		{
-			values.AddRange(setupScript.grainValues);
-			sprites.AddRange(setupScript.grainSprites);
-		}
-		else 		if (categoryMenu.selectedIndex == 2)
-		{
-			values.AddRange(setupScript.kitValues);
-			sprites.AddRange(setupScript.kitSprites);
-		}
-		else 		if (categoryMenu.selectedIndex == 3) 
-		{
-			values.AddRange(setupScript.yeastValues);
-			sprites.AddRange(setupScript.yeastSprites);
-		}
-
-		if (itemMenu.selectedIndex > values.Count - 1)
-		{
-			itemMenu.selectedIndex = 0;
-		}
-		itemMenu.values = values;
-		itemMenu.spriteList = sprites; 
-
+	public void SelectAppropriateQuantities()
+	{
+		LoadComponents ();
+		List<float> items = BrewShopSetup.ShopCategories [categoryMenu.getSelectedValue ()].SubCategories[subCategoryMenu.getSelectedValue()].Items[itemMenu.getSelectedValue()].Quantities;
+		//TODO: need sprites for these...
+		//TODO: FOR NOW: only add one bogus sprite
+		quantityMenu.values = new List<string>();
+		quantityMenu.spriteList = new List<Sprite>();
+		quantityMenu.values.Add("1");
+		quantityMenu.spriteList.Add (Sprite.Create (Resources.LoadAssetAtPath<Texture2D> ("Assets/Graphics/IngredientCategories/Hop.png"), new Rect (0, 0, 50, 50), new Vector2 (0, 0)));
 	}
 
 }
