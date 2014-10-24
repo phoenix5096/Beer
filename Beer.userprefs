@@ -1,25 +1,25 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BrewShop\BrewShopSetup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ScrollingItemMenu.cs">
     <Files>
       <File FileName="Assets\Scripts\GameData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\LoadingScreen\LoadingScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionScreenSetup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionMenuInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionMenuInput.cs" Line="88" Column="1" />
+      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="59" Column="12" />
       <File FileName="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopInput.cs" Line="136" Column="1" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopSetup.cs" Line="57" Column="85" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopInput.cs" Line="179" Column="44" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopSetup.cs" Line="92" Column="111" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="BrewShop" expanded="True">
-                <Node name="BrewShopSetup.cs" selected="True" />
-              </Node>
+              <Node name="BrewShop" expanded="True" />
               <Node name="CharacterSelectionScreen" expanded="True" />
+              <Node name="LoadingScreen" expanded="True" />
+              <Node name="ScrollingItemMenu.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -42,11 +42,7 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BrewShop\BrewShopSetup.cs" line="119" />
-      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BrewShop\BrewShopSetup.cs" line="45" />
-      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BrewShop\BrewShopSetup.cs" line="48" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

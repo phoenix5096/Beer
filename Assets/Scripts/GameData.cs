@@ -13,5 +13,5 @@ public class GameData : MonoBehaviour {
 	public static DateTime GameTime = new DateTime(2014,10,03);
 	public static DateTime GameStarted = DateTime.MinValue;
 	public static int TutorialStep = 0;
-	public static List<string> Inventory = new List<string>();
+	public static List<System.Object> Inventory = new List<System.Object>();
 }

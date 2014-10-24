@@ -22,11 +22,11 @@ public class DisplayTextLogic : MonoBehaviour {
 		//TODO: EVENTS INSTEAD OF CONSTANT CHECKING
 		if (characterMenu.selectedIndex >= 0)
 		{
-			string selectedValue = characterMenu.getSelectedValue();
+			string selectedValue = characterMenu.getSelectedValue().ToString();
 			if (selectedValue != currentSelection) 
 			{
 				currentSelection = selectedValue;
-				label.text = "You have selected the following from the menu above: " + selectedValue;
+				label.text = "You have selected the following from the menu above: " + selectedValue.ToString();
 				sf.FormatText();
 			}
 		}

@@ -11,10 +11,10 @@ public class BrewShopInput : MonoBehaviour {
 	ScrollingItemMenu itemMenu;
 	ScrollingItemMenu quantityMenu;
 
-	private string selectedCategory = string.Empty;
-	private string selectedSubCategory = string.Empty;
-	private string selectedItem = string.Empty;
-	private string selectedQuantity = string.Empty;
+	private System.Object selectedCategory = null;
+	private System.Object selectedSubCategory = null;
+	private System.Object selectedItem = null;
+	private System.Object selectedQuantity = null;
 
 	private void LoadComponents()
 	{
@@ -143,28 +143,28 @@ public class BrewShopInput : MonoBehaviour {
 	{
 		LoadComponents ();
 		//TODO: EVENTS INSTEAD OF CONSTANT CHECKING
-		string newSelectedCategory = categoryMenu.getSelectedValue ();
+		System.Object newSelectedCategory = categoryMenu.getSelectedValue ();
 		if (newSelectedCategory != selectedCategory) 
 		{
 			selectedCategory = newSelectedCategory;
 			SelectAppropriateSubCategory ();
 		}
 
-		string newSelectedSubCategory = subCategoryMenu.getSelectedValue ();
+		System.Object newSelectedSubCategory = subCategoryMenu.getSelectedValue ();
 		if (newSelectedSubCategory != selectedSubCategory) 
 		{
 			selectedSubCategory = newSelectedSubCategory;
 			SelectAppropriateIngredient ();
 		}
 
-		string newSelectedItem = itemMenu.getSelectedValue ();
+		System.Object newSelectedItem = itemMenu.getSelectedValue ();
 		if (newSelectedItem != selectedItem) 
 		{
 			selectedItem = newSelectedItem;
 			SelectAppropriateQuantities ();
 		}
 
-		string newSelectedQty = quantityMenu.getSelectedValue ();
+		System.Object newSelectedQty = quantityMenu.getSelectedValue ();
 		if (newSelectedQty != selectedQuantity) 
 		{
 			selectedQuantity = newSelectedQty;
@@ -175,13 +175,13 @@ public class BrewShopInput : MonoBehaviour {
 	public void SelectAppropriateSubCategory()
 	{
 		LoadComponents ();
-		Dictionary<string, BrewShopSetup.ItemSubCategory> subCategories = BrewShopSetup.ShopCategories[categoryMenu.getSelectedValue ()].SubCategories;
-		subCategoryMenu.values = new List<string>();
+		List<BrewShopSetup.ItemSubCategory> subCategories = (categoryMenu.getSelectedValue () as BrewShopSetup.ItemCategory).SubCategories;
+		subCategoryMenu.values = new List<System.Object>();
 		subCategoryMenu.spriteList = new List<Sprite>();
 
-		foreach (BrewShopSetup.ItemSubCategory sub in subCategories.Values)
+		foreach (BrewShopSetup.ItemSubCategory sub in subCategories)
 		{
-			subCategoryMenu.values.Add(sub.Id);
+			subCategoryMenu.values.Add(sub);
 			subCategoryMenu.spriteList.Add (sub.Icon);
 		}
 	}
@@ -190,13 +190,13 @@ public class BrewShopInput : MonoBehaviour {
 	{
 		LoadComponents ();
 		//TODO: need a better way to reach the sub categories, items, etc...
-		Dictionary<string, BrewShopSetup.Item> items = BrewShopSetup.ShopCategories [categoryMenu.getSelectedValue ()].SubCategories[subCategoryMenu.getSelectedValue()].Items;
-		itemMenu.values = new List<string>();
+		List<BrewShopSetup.Item> items = (subCategoryMenu.getSelectedValue() as BrewShopSetup.ItemSubCategory).Items;
+		itemMenu.values = new List<System.Object>();
 		itemMenu.spriteList = new List<Sprite>();
 		
-		foreach (BrewShopSetup.Item it in items.Values)
+		foreach (BrewShopSetup.Item it in items)
 		{
-			itemMenu.values.Add(it.Id);
+			itemMenu.values.Add(it);
 			itemMenu.spriteList.Add (it.Icon);
 		}
 	}
@@ -204,12 +204,12 @@ public class BrewShopInput : MonoBehaviour {
 	public void SelectAppropriateQuantities()
 	{
 		LoadComponents ();
-		List<float> items = BrewShopSetup.ShopCategories [categoryMenu.getSelectedValue ()].SubCategories[subCategoryMenu.getSelectedValue()].Items[itemMenu.getSelectedValue()].Quantities;
+		List<float> items = (itemMenu.getSelectedValue() as BrewShopSetup.Item).Quantities;
 		//TODO: need sprites for these...
 		//TODO: FOR NOW: only add one bogus sprite
-		quantityMenu.values = new List<string>();
+		quantityMenu.values = new List<System.Object>();
 		quantityMenu.spriteList = new List<Sprite>();
-		quantityMenu.values.Add("1");
+		quantityMenu.values.Add(1);
 		quantityMenu.spriteList.Add (Sprite.Create (Resources.LoadAssetAtPath<Texture2D> ("Assets/Graphics/IngredientCategories/Hop.png"), new Rect (0, 0, 50, 50), new Vector2 (0, 0)));
 	}
 

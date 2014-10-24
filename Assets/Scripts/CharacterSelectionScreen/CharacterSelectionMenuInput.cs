@@ -42,17 +42,11 @@ public class CharacterSelectionMenuInput : MonoBehaviour {
 		characterMenu.spriteList.Add ( GameObject.Find ("SceneLoad").GetComponent<CharacterSelectionScreenSetup> ().female1);
 		characterMenu.spriteList.Add ( GameObject.Find ("SceneLoad").GetComponent<CharacterSelectionScreenSetup> ().female2);
 		characterMenu.spriteList.Add ( GameObject.Find ("SceneLoad").GetComponent<CharacterSelectionScreenSetup> ().female3);
-		/*FOR TESTING*///characterMenu.spriteList.Add ( GameObject.Find ("SceneLoad").GetComponent<CharacterSelectionScreenSetup> ().male1);
-		/*FOR TESTING*///characterMenu.spriteList.Add ( GameObject.Find ("SceneLoad").GetComponent<CharacterSelectionScreenSetup> ().male2);
-		/*FOR TESTING*///characterMenu.spriteList.Add ( GameObject.Find ("SceneLoad").GetComponent<CharacterSelectionScreenSetup> ().male3);
 
-		characterMenu.values = new System.Collections.Generic.List<string> ();
+		characterMenu.values = new System.Collections.Generic.List<System.Object> ();
 		characterMenu.values.Add("Female_Jock");
 		characterMenu.values.Add("Female_Nerd");
 		characterMenu.values.Add("Female_Prep");
-		/*FOR TESTING*///characterMenu.values.Add("Male_Jock");
-		/*FOR TESTING*///characterMenu.values.Add("Male_Nerd");
-		/*FOR TESTING*///characterMenu.values.Add("Male_Prep");
 	}
 
 	public void SelectMale()
@@ -67,7 +61,7 @@ public class CharacterSelectionMenuInput : MonoBehaviour {
 		characterMenu.spriteList.Add ( GameObject.Find ("SceneLoad").GetComponent<CharacterSelectionScreenSetup> ().male2);
 		characterMenu.spriteList.Add ( GameObject.Find ("SceneLoad").GetComponent<CharacterSelectionScreenSetup> ().male3);
 
-		characterMenu.values = new System.Collections.Generic.List<string> ();
+		characterMenu.values = new System.Collections.Generic.List<System.Object> ();
 		characterMenu.values.Add("Male_Jock");
 		characterMenu.values.Add("Male_Nerd");
 		characterMenu.values.Add("Male_Prep");

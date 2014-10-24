@@ -6,8 +6,8 @@ public class ScrollingItemMenu : MonoBehaviour
 {
 	//game object place holders where the sprites will be drawn.
 	public List<GameObject> slots;
-	public List<Sprite> spriteList;//TODO: convert these 2 Lists in a dictionary of "Object","Sprite"
-	public List<string> values;
+	public List<Sprite> spriteList;
+	public List<System.Object> values;
 	public int selectedIndex = 0;
 	public int masterSlotIndex = 1;
 	public int fps = 25;
@@ -26,7 +26,7 @@ public class ScrollingItemMenu : MonoBehaviour
 	//ex: slotDeltaScales[0] = scale difference between slots[0] and slots[1]
 	private List<Vector3> slotDeltaScales = new List<Vector3> ();
 
-	public string getSelectedValue()
+	public System.Object getSelectedValue()
 	{
 		return values [selectedIndex];
 	}
