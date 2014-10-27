@@ -2,14 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ScrollingItemMenu.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameData.cs" Line="18" Column="1" />
       <File FileName="Assets\Scripts\LoadingScreen\LoadingScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionScreenSetup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionMenuInput.cs" Line="88" Column="1" />
-      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="59" Column="12" />
-      <File FileName="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopInput.cs" Line="179" Column="44" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopSetup.cs" Line="92" Column="111" />
+      <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionMenuInput.cs" Line="60" Column="79" />
+      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="32" Column="3" />
+      <File FileName="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" Line="35" Column="1" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopInput.cs" Line="179" Column="10" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopSetup.cs" Line="189" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,7 +18,6 @@
             <Node name="Scripts" expanded="True">
               <Node name="BrewShop" expanded="True" />
               <Node name="CharacterSelectionScreen" expanded="True" />
-              <Node name="LoadingScreen" expanded="True" />
               <Node name="ScrollingItemMenu.cs" selected="True" />
             </Node>
           </Node>
