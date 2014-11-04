@@ -41,7 +41,6 @@ public class TopDisplayLogic : MonoBehaviour {
 	public void RefreshMoney()
 	{
 		txtMoney.text = GameData.Money.ToString("0.00 $");
-		//TODO PIERRE: always display 2 decimals
 	}
 
 	public void RefreshLevel()

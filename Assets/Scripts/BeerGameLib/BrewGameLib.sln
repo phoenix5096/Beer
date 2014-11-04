@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IngredientFactory", "IngredientFactory.csproj", "{BD057EDE-A893-4B5B-AEEF-F4A348D85036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IngredientFactoryTestApp", "..\IngredientFactoryTestApp\IngredientFactoryTestApp.csproj", "{78D6D321-267F-4C9D-BFAD-C7CDCA7D80A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD057EDE-A893-4B5B-AEEF-F4A348D85036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD057EDE-A893-4B5B-AEEF-F4A348D85036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD057EDE-A893-4B5B-AEEF-F4A348D85036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD057EDE-A893-4B5B-AEEF-F4A348D85036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78D6D321-267F-4C9D-BFAD-C7CDCA7D80A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78D6D321-267F-4C9D-BFAD-C7CDCA7D80A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78D6D321-267F-4C9D-BFAD-C7CDCA7D80A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78D6D321-267F-4C9D-BFAD-C7CDCA7D80A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

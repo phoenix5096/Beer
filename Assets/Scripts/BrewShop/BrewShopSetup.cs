@@ -26,11 +26,17 @@ public class BrewShopSetup : MonoBehaviour {
 		BrewShopInput inputScript = GameObject.Find ("SceneLoad").GetComponent<BrewShopInput>();
 		inputScript.SelectAppropriateSubCategory ();
 	}
-
-	//TODO: make this vary denpending on certain game factors?  read from an XML file?
+	
 	//Creates the main categories, sub categories, items
 	private static void PopulateInventory()
 	{
+		//TODO populate categories, subcategories, and items from the Factory.  this should probably all be inside a "shop" object. ex:
+		//TODO: make available items vary denpending on certain game factors? 
+		//
+		//List<Ingredient> AleYeasts = IngredientFactory.GetIngredientsOfType(IngredientCategory.AleYeast);
+		//List<Ingredient> LagerYeasts = IngredientFactory.GetIngredientsOfType(IngredientCategory.LagerYeast);
+		//...
+
 		ShopCategories.Clear ();
 
 		Texture2D hopTexture = Resources.LoadAssetAtPath<Texture2D> ("Assets/Graphics/IngredientCategories/Hop.png");
@@ -92,24 +98,7 @@ public class BrewShopSetup : MonoBehaviour {
 		subCategoryYeast_Dry.Items.Add (new Item ("YEAST_DRY_AMERICANALE", 					yeastSprite,	3.0F, 	"Some dry Yeast 2",		new List<float>() {1}));
 		categoryYeast.SubCategories.Add (subCategoryYeast_Dry);
 
-		//TODO: other types
-		//ItemCategory categoryKits = 				new ItemCategory 	("KITS", 				SPRITE_BY_ID["KITS"));
-		//ItemSubCategory subCategoryKits_Ale = 			new ItemSubCategory ("KITS_ALE", 			SPRITE_BY_ID["KITS_ALE"));
-		//ItemSubCategory subCategoryKits_Stout = 			new ItemSubCategory ("KITS_STOUT", 			SPRITE_BY_ID["KITS_STOUT"));
-		//ItemSubCategory subCategoryKits_Lager = 			new ItemSubCategory ("KITS_LAGER", 			SPRITE_BY_ID["KITS_LAGER"));
-		//
-		//ItemCategory categoryTools = 				new ItemCategory 	("TOOLS", 				SPRITE_BY_ID["TOOLS"));
-		//ItemSubCategory subCategoryTools_Fermenters = 	new ItemSubCategory ("TOOLS_FERMENTER", 	SPRITE_BY_ID["TOOLS_FERMENTER"));
-		//ItemSubCategory subCategoryTools_Kettles = 		new ItemSubCategory ("TOOLS_KETTLE", 		SPRITE_BY_ID["TOOLS_KETTLE"));
-		//ItemSubCategory subCategoryTools_MashTuns = 		new ItemSubCategory ("TOOLS_MASHTUN", 		SPRITE_BY_ID["TOOLS_MASHTUN"));
-		//ItemSubCategory subCategoryTools_Instruments = 	new ItemSubCategory ("TOOLS_INSTRUMENT",	SPRITE_BY_ID["TOOLS_INSTRUMENT"));
-		//ItemSubCategory subCategoryTools_Misc = 			new ItemSubCategory ("TOOLS_MISC", 			SPRITE_BY_ID["TOOLS_MISC"));
-		//ItemSubCategory subCategoryTools_Botting = 		new ItemSubCategory ("TOOLS_BOTTLING", 		SPRITE_BY_ID["TOOLS_BOTTLING"));
-		//
-		//ItemCategory categoryAdjuncts = 			new ItemCategory 	("ADJUNCTS", 			SPRITE_BY_ID["ADJUNCTS"));
-		//ItemSubCategory subCategoryAdjunct_Sugar = 		new ItemSubCategory ("ADJUNCT_SUGAR", 		SPRITE_BY_ID["ADJUNCT_SUGAR"));
-		//ItemSubCategory subCategoryAdjunct_Chemical = 	new ItemSubCategory ("ADJUNCT_CHEMICAL",	SPRITE_BY_ID["ADJUNCT_CHEMICAL"));
-		//ItemSubCategory subCategoryAdjunct_Misc = 		new ItemSubCategory ("ADJUNCT_MISC", 		SPRITE_BY_ID["ADJUNCT_MISC"));
+		//TODO: other categories
 
 		ShopCategories.Add (categoryHops);
 		ShopCategories.Add (categoryGrains);

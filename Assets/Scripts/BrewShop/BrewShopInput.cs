@@ -189,7 +189,6 @@ public class BrewShopInput : MonoBehaviour {
 	public void SelectAppropriateIngredient()
 	{
 		LoadComponents ();
-		//TODO: need a better way to reach the sub categories, items, etc...
 		List<BrewShopSetup.Item> items = (subCategoryMenu.getSelectedValue() as BrewShopSetup.ItemSubCategory).Items;
 		itemMenu.values = new List<System.Object>();
 		itemMenu.spriteList = new List<Sprite>();
@@ -205,8 +204,7 @@ public class BrewShopInput : MonoBehaviour {
 	{
 		LoadComponents ();
 		List<float> items = (itemMenu.getSelectedValue() as BrewShopSetup.Item).Quantities;
-		//TODO: need sprites for these...
-		//TODO: FOR NOW: only add one bogus sprite
+		//TODO: need sprites for these... FOR NOW: only add one bogus sprite
 		quantityMenu.values = new List<System.Object>();
 		quantityMenu.spriteList = new List<Sprite>();
 		quantityMenu.values.Add(1);

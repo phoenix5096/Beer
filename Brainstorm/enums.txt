@@ -1,0 +1,190 @@
+//DONE: One Enum per ingredient type
+
+Enum Attribute
+-HeadRetention
+-//DONE: Rest is already done
+
+Enum IngredientType
+-Sugar
+-Grain
+-Hop
+-Chemical
+-Adjunct
+-Yeast
+
+Enum HouseType
+-Apartment
+-Condo
+-SmallHouse
+-LargeHouse
+-Factory
+
+============================
+
+Class Item
+-string Name
+-string Description
+-string SpritePath
+-float costPerUnit
+
+Class Ingredient: Item
+-IngredientType ingretientType
+-Dictionary<Attribute, double>
+
+Class Grain: Ingredient
+//DONE
+
+Class Hop: Ingredient
+//DONE
+
+Class Yeast: Ingredient
+//DONE
+
+Class Sugar: Ingredient
+-SugarType adjunctType
+//similar to Grain but 100% fermentable with no mash required
+
+Class Adjunct: Ingredient
+-AdjunctType adjunctType
+
+Class Chemical: Ingredient
+-ChemicalType adjunctType
+-??
+
+============================
+
+Enum EquipmentType
+-Kettle //for Boil and\or HLT
+-Mashtun
+-Fermenter
+-Thermometer
+-Hydrometer
+-Scale
+-Siphon
+-Grinder
+-Paddle
+-Bottling
+-Chiller
+-HeatSource
+-//...
+
+Enum KettleType
+//TODO: list all kettles
+//TODO: one enum per equipment type
+Class House
+-String name
+-String description
+-float cost
+-float rent
+-HouseType type
+-int MaxKitchenLevel
+-int MaxStorageLevel
+-int MaxCellarLevel
+-int MaxBedroomLevel
+-int CurrentKitchenLevel
+-int CurrentStorageLevel
+-int CurrentCellarLevel
+-int CurrentBedroomLevel
+
+Class Character
+-string Name
+-House myHouse
+-List<Item> inventory
+-Float money
+-Int experience
+
+Class Equipment: Item
+-List<Equipment> Prequequisites
+-EquipmentType equipmentType
+
+Class Kettle: Equipment
+-KettleType t
+-Float capacity
+
+Class Mashtun: Equipment
+-MashtunType t
+-Float volume
+-Float clarityPct
+-Float conversionPct
+
+Class Fermenter: Equipment
+-FermenterType t
+-Float capacity
+-Float InfectionRiskPct
+-Float AttenuationPct
+-Bool requiresRacking
+-Float temperatureVariation
+
+Class Thermometer: Equipment
+//TODO: type
+-Float Accuracy
+
+Class Hydrometer: Equipment
+//TODO: type
+-Float Accuracy
+-Float InfectionRisk
+
+Class Ibuometer: Equipment
+//TODO: type
+-Float Accuracy
+-Float InfectionRisk
+
+Class Srmmeter: Equipment
+//TODO: type
+-Float Accuracy
+-Float InfectionRisk
+
+
+Class Scale: Equipment
+//TODO: type
+-Float Accuracy
+
+Class Siphon: Equipment
+//TODO: type
+-Float InfectionRisk
+-Float MaxVolume
+
+Class Grinder: Equipment
+//TODO: type
+-Float MaxVolume
+-float Efficiency
+
+Class Paddle: Equipment
+//TODO: type
+-Float InfectionRisk
+
+Class Bottling: Equipment
+//TODO: type
+-Float Volume
+-Float infection Risk
+-bool requiresCO2
+
+Class CO2Tank: Equipment
+//TODO: type
+-volume
+
+Class Chiller: Equipment
+//TODO: type
+
+Class Heatsource: Equipment
+//TODO: type
+-Float MaxVolume
+-Float Precision
+-bool isElectric
+
+Class Filter: Equipment
+//TODO: type
+-Float Clarity
+-Float InfectionRisk
+
+Class Barrel: Equipment //????
+//TODO: type
+-Float volume
+-BeerAttribute attributes
+
+Class IngredientStorage: Equipment //????
+//TODO: type
+-Float freshnessPct
+==========================
+//TODO: split equipment in "Active" and "Passive"?  ex: 
+//TODO: some contests limit your equipment?
