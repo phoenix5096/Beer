@@ -6,7 +6,8 @@ using System.Text;
 
 public class Fermentable : Ingredient
     {
-        public int FermentablePpg { get; set; }
+        public int Ppg { get; set; }
         public int ColorLovibond { get; set; }
+		public int FermentablePct { get; set; }
     }
 

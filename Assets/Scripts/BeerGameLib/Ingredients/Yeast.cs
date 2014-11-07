@@ -6,8 +6,9 @@ using System.Text;
 
 public class Yeast : Ingredient
     {
-        public double Attenuation { get; set; }
-        public double MinTemp { get; set; }
-        public double MaxTemp { get; set; }
+		public int Tolerance { get; set; }
+		public int Attenuation { get; set; }
+		public int MinTemp { get; set; }
+		public int MaxTemp { get; set; }
     }
 

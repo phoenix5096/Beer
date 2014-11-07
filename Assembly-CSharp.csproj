@@ -51,7 +51,6 @@
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Factories\Enums.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Factories\IngredientFactory.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Ingredients\Chemical.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Ingredients\Fermentable.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Ingredients\Hop.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Ingredients\Ingredient.cs" />
@@ -89,6 +88,7 @@
      <Compile Include="Assets\Scripts\_Obsolete\AnimatedGifDrawer.cs" />
      <Compile Include="Assets\Scripts\_Obsolete\BackgroundStretcher.cs" />
      <None Include="Assets\Plugins\Android\README.txt" />
+     <None Include="Assets\Scripts\BeerGameLib\DataAccess\SQL Query Examples.txt" />
  <Reference Include="System.Drawing">
  <HintPath>C:/Users/Pierre/Documents/GitHub/Beer/Assets/System.Drawing.dll</HintPath>
  </Reference>

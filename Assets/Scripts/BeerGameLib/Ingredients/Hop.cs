@@ -6,6 +6,7 @@ using System.Text;
 
 public class Hop : Ingredient
     {
-        public double AlphaAcid { get; set; }
+        public double MinAlphaAcid { get; set; }
+		public double MaxAlphaAcid { get; set; }
     }
 
