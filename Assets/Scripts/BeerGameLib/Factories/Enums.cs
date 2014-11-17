@@ -47,55 +47,55 @@ public class EnumHelper
 public enum IngredientCategory
 {
 	[Description("Adjunct")]
-	Adjunct,
-
-	[Description("Ale Yeast")]
-	AleYeast,
-
-	[Description("American Hop")]
-	AmericanHop,
+	Adjunct =4,
 
 	[Description("Base Malt")]
-	BaseMalt,
-
-	[Description("Brittish Hop")]
-	BritishHop,
-
-	[Description("Chemical")]
-	Chemical,
-
-	[Description("Extract")]
-	Extract,
-
-	[Description("Fruit and Vegetable")]
-	FruitVegetable,
-
-	[Description("German Hop")]
-	GermanHop,
-
-	[Description("International Hop")]
-	InternationalHop,
-
-	[Description("Lager Yeast")]
-	LagerYeast,
-
-	[Description("Special Yeast")]
-	SpecialYeast,
+	BaseMalt = 5,
 
 	[Description("Specialty Malt")]
-	SpecialtyMalt,
+	SpecialtyMalt = 6,
 
-	[Description("Spice")]
-	Spice,
+	[Description("Extract")]
+	Extract = 7,
 
 	[Description("Sugar")]
-	Sugar,
+	Sugar = 8,
 
+	[Description("Fruit and Vegetable")]
+	FruitVegetable = 9,
+
+	[Description("American Hop")]
+	AmericanHop = 10,
+
+	[Description("Brittish Hop")]
+	BritishHop = 11,
+
+	[Description("German Hop")]
+	GermanHop = 12,
+	
+	[Description("International Hop")]
+	InternationalHop = 13,
+	
+	[Description("Ale Yeast")]
+	AleYeast = 14,
+	
+	[Description("Lager Yeast")]
+	LagerYeast = 15,
+
+	[Description("Special Yeast")]
+	SpecialYeast = 16,
+	
 	[Description("Trappist Yeast")]
-	TrappistYeast,
+	TrappistYeast = 17,
 
 	[Description("Wheat Yeast")]
-	WheatYeast
+	WheatYeast = 18,
+	
+	[Description("Spice")]
+	Spice = 19,
+
+	[Description("Finning")]
+	Finning = 20
 }
 
 

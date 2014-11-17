@@ -18,10 +18,7 @@ public class MainMenuInput : MonoBehaviour {
 		}
 		else if (buttonId == "Options") 
 		{
-			List<Ingredient> a =	IngredientFactory.GetIngredientsOfType(IngredientCategory.AleYeast);
-			List<Ingredient> b =	IngredientFactory.GetIngredientsOfType(IngredientCategory.AmericanHop);
-			List<Ingredient> c =	IngredientFactory.GetIngredientsOfType(IngredientCategory.SpecialtyMalt);
-			//Application.LoadLevel ("Options");
+			Application.LoadLevel ("Options");
 		}
 	}
 }

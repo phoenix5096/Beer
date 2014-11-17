@@ -46,15 +46,21 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Category.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Fermentable.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Hop.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredient.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Inventory.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Item.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Shop.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Subcategory.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Yeast.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\DataTable.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Factories\Enums.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Factories\IngredientFactory.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Ingredients\Fermentable.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Ingredients\Hop.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Ingredients\Ingredient.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Ingredients\Yeast.cs" />
      <Compile Include="Assets\Scripts\BrewShop\BrewShopInput.cs" />
      <Compile Include="Assets\Scripts\BrewShop\BrewShopSetup.cs" />
      <Compile Include="Assets\Scripts\ButtonTextHighlighting.cs" />
@@ -88,7 +94,6 @@
      <Compile Include="Assets\Scripts\_Obsolete\AnimatedGifDrawer.cs" />
      <Compile Include="Assets\Scripts\_Obsolete\BackgroundStretcher.cs" />
      <None Include="Assets\Plugins\Android\README.txt" />
-     <None Include="Assets\Scripts\BeerGameLib\DataAccess\SQL Query Examples.txt" />
  <Reference Include="System.Drawing">
  <HintPath>C:/Users/Pierre/Documents/GitHub/Beer/Assets/System.Drawing.dll</HintPath>
  </Reference>

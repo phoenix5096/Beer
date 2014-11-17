@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BrewShop\BrewShopSetup.cs">
     <Files>
       <File FileName="Assets\Scripts\GameData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\LoadingScreen\LoadingScreenSetup.cs" Line="1" Column="1" />
@@ -8,17 +8,17 @@
       <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionMenuInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopSetup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" Line="27" Column="24" />
-      <File FileName="Assets\Scripts\BeerGameLib\Ingredients\Ingredient.cs" Line="13" Column="37" />
-      <File FileName="Assets\Scripts\BeerGameLib\Factories\IngredientFactory.cs" Line="8" Column="77" />
-      <File FileName="Assets\Scripts\BeerGameLib\Ingredients\Yeast.cs" Line="12" Column="3" />
-      <File FileName="Assets\Scripts\BeerGameLib\Ingredients\Hop.cs" Line="13" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Ingredients\Fermentable.cs" Line="14" Column="1" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopInput.cs" Line="203" Column="1" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopSetup.cs" Line="18" Column="4" />
+      <File FileName="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" Line="18" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredient.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Factories\IngredientFactory.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Yeast.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Hop.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Fermentable.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\_Obsolete\AnimatedGifDrawer.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\DataAccess\DataTable.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" Line="9" Column="47" />
+      <File FileName="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" Line="119" Column="3" />
       <File FileName="Assets\Scripts\MainMenuScreen\MainMenuInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\Factories\Enums.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Carnival\CarnivalLoad.cs" Line="1" Column="1" />
@@ -26,27 +26,26 @@
       <File FileName="Assets\Scripts\IntroVideoScreen\IntroVideoScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Options\OptionsSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\TopDisplayLogic.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\_Obsolete\BackgroundStretcher.cs" Line="27" Column="1" />
+      <File FileName="Assets\Scripts\_Obsolete\BackgroundStretcher.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Options\OptionsInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainMenuScreen\MainMenuScreenSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Category.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Shop.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Subcategory.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Item.cs" Line="22" Column="12" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Inventory.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ButtonTextHighlighting.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="_Obsolete" expanded="True" />
-              <Node name="BeerGameLib" expanded="True">
-                <Node name="DataAccess" expanded="True">
-                  <Node name="DataAccess.cs" selected="True" />
-                </Node>
-                <Node name="Factories" expanded="True" />
-                <Node name="Ingredients" expanded="True" />
+              <Node name="BrewShop" expanded="True">
+                <Node name="BrewShopSetup.cs" selected="True" />
               </Node>
-              <Node name="BrewShop" expanded="True" />
-              <Node name="Carnival" expanded="True" />
-              <Node name="CityMapScreen" expanded="True" />
               <Node name="IntroVideoScreen" expanded="True" />
-              <Node name="MainMenuScreen" expanded="True" />
-              <Node name="Options" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -56,14 +55,19 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>malts[0]</Value>
-          <Value>iii[0] as Yeast</Value>
+          <Value>SubCategories</Value>
+          <Value>ItemsBySubCategory[0]</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BeerGameLib\Ingredients\Shop.cs" line="45" />
+      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" line="196" />
+      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" line="214" />
+      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" line="95" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

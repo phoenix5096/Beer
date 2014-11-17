@@ -27,7 +27,7 @@ public static class IngredientFactory
 				case IngredientCategory.Sugar:
 						return DataAccess.GetFermentableOfType (type).Cast<Ingredient> ().ToList ();
 				case IngredientCategory.Spice:
-				case IngredientCategory.Chemical:
+				case IngredientCategory.Finning:
 						return DataAccess.GetChemicalOfType (type).Cast<Ingredient> ().ToList ();
 				default:
 						return null;

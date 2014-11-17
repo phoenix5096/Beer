@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+//TODO PIERRE: investigate index out of range exceptions between German hop and American Hop
 public class BrewShopInput : MonoBehaviour {
 
 	public string ButtonId ="";
@@ -10,11 +11,11 @@ public class BrewShopInput : MonoBehaviour {
 	ScrollingItemMenu subCategoryMenu;
 	ScrollingItemMenu itemMenu;
 	ScrollingItemMenu quantityMenu;
+	GUIText descriptionLabel;
 
 	private System.Object selectedCategory = null;
 	private System.Object selectedSubCategory = null;
 	private System.Object selectedItem = null;
-	private System.Object selectedQuantity = null;
 
 	private void LoadComponents()
 	{
@@ -38,9 +39,9 @@ public class BrewShopInput : MonoBehaviour {
 			itemMenu = GameObject.Find ("IngredientScrollingList").GetComponent<ScrollingItemMenu> ();
 		}
 
-		if (quantityMenu == null) 
+		if (descriptionLabel == null) 
 		{
-			quantityMenu = GameObject.Find ("QuantityScrollingList").GetComponent<ScrollingItemMenu> ();
+			descriptionLabel = GameObject.Find ("descriptionLabel").GetComponent<GUIText>();
 		}
 	}
 
@@ -142,6 +143,11 @@ public class BrewShopInput : MonoBehaviour {
 	public void Update()
 	{
 		LoadComponents ();
+		if (!BrewShopSetup.IsReady)
+		{
+			return;
+		}
+
 		//TODO: EVENTS INSTEAD OF CONSTANT CHECKING
 		System.Object newSelectedCategory = categoryMenu.getSelectedValue ();
 		if (newSelectedCategory != selectedCategory) 
@@ -161,54 +167,53 @@ public class BrewShopInput : MonoBehaviour {
 		if (newSelectedItem != selectedItem) 
 		{
 			selectedItem = newSelectedItem;
-			SelectAppropriateQuantities ();
-		}
-
-		System.Object newSelectedQty = quantityMenu.getSelectedValue ();
-		if (newSelectedQty != selectedQuantity) 
-		{
-			selectedQuantity = newSelectedQty;
-			//TODO: update "Cost text?"
+			UpdateText();
 		}
 	}
 
 	public void SelectAppropriateSubCategory()
 	{
+		//get the data
 		LoadComponents ();
-		List<BrewShopSetup.ItemSubCategory> subCategories = (categoryMenu.getSelectedValue () as BrewShopSetup.ItemCategory).SubCategories;
+		int selectedCategoryId = (categoryMenu.getSelectedValue () as Category).Id;
+		List<Subcategory> subCategories = BrewShopSetup.BrewShop.ShopInventory.SubCategories[selectedCategoryId];
+
 		subCategoryMenu.values = new List<System.Object>();
 		subCategoryMenu.spriteList = new List<Sprite>();
-
-		foreach (BrewShopSetup.ItemSubCategory sub in subCategories)
+		subCategoryMenu.selectedIndex = 0;
+		foreach (Subcategory sub in subCategories)
 		{
 			subCategoryMenu.values.Add(sub);
-			subCategoryMenu.spriteList.Add (sub.Icon);
+			subCategoryMenu.spriteList.Add (sub.CategorySprite);
 		}
 	}
 
 	public void SelectAppropriateIngredient()
 	{
 		LoadComponents ();
-		List<BrewShopSetup.Item> items = (subCategoryMenu.getSelectedValue() as BrewShopSetup.ItemSubCategory).Items;
+		int selectedSubCategoryId = (subCategoryMenu.getSelectedValue () as Subcategory).Id;
+		List<Item> ingredients = BrewShopSetup.BrewShop.ShopInventory.ItemsBySubCategory[selectedSubCategoryId];
+
 		itemMenu.values = new List<System.Object>();
 		itemMenu.spriteList = new List<Sprite>();
-		
-		foreach (BrewShopSetup.Item it in items)
+		itemMenu.selectedIndex = 0;
+		foreach (Item it in ingredients)
 		{
 			itemMenu.values.Add(it);
-			itemMenu.spriteList.Add (it.Icon);
+			itemMenu.spriteList.Add (it.ItemSprite);
 		}
 	}
 
-	public void SelectAppropriateQuantities()
+	public void UpdateText()
 	{
 		LoadComponents ();
-		List<float> items = (itemMenu.getSelectedValue() as BrewShopSetup.Item).Quantities;
-		//TODO: need sprites for these... FOR NOW: only add one bogus sprite
-		quantityMenu.values = new List<System.Object>();
-		quantityMenu.spriteList = new List<Sprite>();
-		quantityMenu.values.Add(1);
-		quantityMenu.spriteList.Add (Sprite.Create (Resources.LoadAssetAtPath<Texture2D> ("Assets/Graphics/IngredientCategories/Hop.png"), new Rect (0, 0, 50, 50), new Vector2 (0, 0)));
+		if (selectedCategory != null && selectedSubCategory!=null && selectedItem !=null)
+		{
+			descriptionLabel.text = (selectedCategory as Category).Name + "; " + (selectedSubCategory as Subcategory).Name  + "; " + (selectedItem as Ingredient).Name;
+		}
+		else
+		{
+			descriptionLabel.text = "NULL";
+		}
 	}
-
 }
