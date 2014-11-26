@@ -47,20 +47,31 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BeerGameLib\Classes\Category.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Fermentable.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Hop.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredient.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\BaseKit.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Chiller.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Container.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Equipment.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Fermenter.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\FermenterTemperatureControl.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Filter.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Grinder.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Mashtun.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\MeasuringInstrument.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Pot.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Sanitizer.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Fermentable.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Hop.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Ingredient.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Yeast.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Classes\Inventory.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Classes\Item.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Classes\Shop.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Classes\Subcategory.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Yeast.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\DataTable.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Factories\Enums.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Factories\IngredientFactory.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Enums\EnumHelper.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Enums\ItemCategory.cs" />
      <Compile Include="Assets\Scripts\BrewShop\BrewShopInput.cs" />
      <Compile Include="Assets\Scripts\BrewShop\BrewShopSetup.cs" />
      <Compile Include="Assets\Scripts\ButtonTextHighlighting.cs" />
@@ -94,6 +105,7 @@
      <Compile Include="Assets\Scripts\_Obsolete\AnimatedGifDrawer.cs" />
      <Compile Include="Assets\Scripts\_Obsolete\BackgroundStretcher.cs" />
      <None Include="Assets\Plugins\Android\README.txt" />
+     <None Include="Assets\Scripts\BeerGameLib\Enums\TODO.txt" />
  <Reference Include="System.Drawing">
  <HintPath>C:/Users/Pierre/Documents/GitHub/Beer/Assets/System.Drawing.dll</HintPath>
  </Reference>

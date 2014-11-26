@@ -7,7 +7,7 @@ using System.Text;
 public class Shop
 {
 	public string Name = string.Empty;
-	public Inventory ShopInventory = new Inventory ();
+	public Inventory ShopInventory = new Inventory (); //TODO: store this in memory for faster loading?
 
 	public Shop (string name)
 	{

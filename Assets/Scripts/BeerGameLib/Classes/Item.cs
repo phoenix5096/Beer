@@ -13,7 +13,7 @@ public class Item
 	public string Description {get; set;}
 	public int SubcategoryId { get; set; }
 	public double Cost { get; set; }
-	public int LevelRequired { get; set; }
+	public int CharacterLevelRequired { get; set; }
 	public Sprite ItemSprite { get; set;}
 	public string SpriteLocation 
 	{ 
