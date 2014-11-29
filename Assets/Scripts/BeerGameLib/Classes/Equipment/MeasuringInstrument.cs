@@ -22,4 +22,21 @@ public class MeasuringInstrument : Equipment
 	
 	//The percentage chance to infect the beer when using this equipment.
 	public int InfectionFactor { get; set;}
+
+	public MeasuringInstrument()
+	{
+	}
+	
+	public MeasuringInstrument(Equipment e)
+	{
+		this.KitchenLevelRequired = e.KitchenLevelRequired;
+		this.CellarLevelRequired = e.CellarLevelRequired;
+		this.CharacterLevelRequired = e.CharacterLevelRequired;
+		this.Cost = e.Cost;
+		this.Description = e.Description;
+		this.Id = e.Id;
+		this.Name = e.Name;
+		this.SpriteLocation = e.SpriteLocation;
+		this.SubcategoryId = e.SubcategoryId;
+	}
 }

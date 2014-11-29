@@ -9,6 +9,7 @@ public class BrewShopSetup : MonoBehaviour
 	void Start () 
 	{
 		BrewShop = new Shop ("Brew Store");
+		//BrewShop = new Shop ("Tool Store"); // <---this works too for the tool store
 
 		//setup the category menu
 		ScrollingItemMenu categoryMenu = GameObject.Find ("IngredientTypeScrollingList").GetComponent<ScrollingItemMenu>();

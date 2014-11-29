@@ -44,20 +44,8 @@ public class Inventory
 	public readonly Dictionary <int,double> ItemQuantities = new Dictionary <int,double>();
 
 	
-	public bool Add(Item i, double amount)
+	public bool Add(Item i, Subcategory s, Category c, double amount)
 	{
-		Subcategory s = DataAccess.GetSubcategory (i.SubcategoryId);
-		if (s == null) 
-		{
-			return false;
-		}
-
-		Category c = DataAccess.GetCategory (s.ParentCategoryId);
-		if (c == null) 
-		{
-			return false;
-		}
-
 		if (!MainCategories.Keys.Contains(c.Id))
 		{
 			MainCategories.Add(c.Id, c);

@@ -209,7 +209,7 @@ public class BrewShopInput : MonoBehaviour {
 		LoadComponents ();
 		if (selectedCategory != null && selectedSubCategory!=null && selectedItem !=null)
 		{
-			descriptionLabel.text = (selectedCategory as Category).Name + "; " + (selectedSubCategory as Subcategory).Name  + "; " + (selectedItem as Ingredient).Name;
+			descriptionLabel.text = (selectedCategory as Category).Name + "; " + (selectedSubCategory as Subcategory).Name  + "; " + (selectedItem as Item).Name;
 		}
 		else
 		{

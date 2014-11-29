@@ -33,62 +33,21 @@ public class DataAccess : MonoBehaviour
 		List<int> SubCategorieIds = DataAccess.GetSubCategoriesIdsForStore(shopName);
 		foreach(int id in SubCategorieIds)
 		{
-			List<Item> ingredients = GetItems((ItemCategory)id);
-			foreach (Item i in ingredients)
+			List<Subcategory> associatedSubcategories;
+			List<Category> associatedCategories;
+			List<Item> items;
+
+			items = GetItems((ItemCategory)id, out associatedSubcategories, out associatedCategories);
+			for (int i =0; i <items.Count; i++)
 			{
-				returnValue.Add(i, 1);
+				returnValue.Add(items[i], associatedSubcategories[i], associatedCategories[i],  1);
 			}
 		}
 
 		return returnValue;
 	}
-
-	//TODO: make this obsolete by using the values retrieved at the same time as the items
-	public static Category GetCategory(int Id)
-	{
-		Category returnValue = null;
-		SqliteDatabase sqlDB = new SqliteDatabase(_DBNAME);
-		DataTable table = sqlDB.ExecuteQuery(string.Format("select Name, Pkey, SpritePath from tbl_ItemCategory c where pkey = {0}", Id));
-
-		if (table.Rows.Count > 0) 
-		{
-			DataRow row = table.Rows [0];
-			returnValue = new Category ();
-			returnValue.Id = (int)row ["PKey"];
-			returnValue.Name = row ["Name"].ToString ();
-			returnValue.SpriteLocation = row ["SpritePath"].ToString ();
-		}
-		
-		return returnValue;
-	}
-
-	//TODO: make this obsolete by using the values retrieved at the same time as the items
-	public static Subcategory GetSubcategory(int Id)
-	{
-		Subcategory returnValue = null;
-		SqliteDatabase sqlDB = new SqliteDatabase(_DBNAME);
-		DataTable table = sqlDB.ExecuteQuery(string.Format("select Name, Pkey, SpritePath, ParentCategory from tbl_ItemCategory c where pkey = {0}", Id));
-		
-		if (table.Rows.Count > 0) 
-		{
-			DataRow row = table.Rows [0];
-			returnValue = new Subcategory();
-			returnValue.Id = (int)row ["PKey"];
-			returnValue.Name = row ["Name"].ToString ();
-			returnValue.ParentCategoryId = (int)row ["ParentCategory"];
-			returnValue.SpriteLocation = row ["SpritePath"].ToString ();
-		}
-		
-		return returnValue;
-	}
-
-
-	/////NEW WAVE
-	/// 
-	/// 
-	/// 
-
-	private static List<Item>  GetItems(ItemCategory category)
+	
+	private static List<Item>  GetItems(ItemCategory category, out List<Subcategory> associatedSubcategories, out List<Category> associatedCategories)
 	{
 		string query = string.Empty;
 		string tableName = EnumHelper.GetDbTableName (category);
@@ -112,7 +71,8 @@ public class DataAccess : MonoBehaviour
 					"d.PKey as CategoryId, d.Name as CategoryName, d.SpritePath as CategorySpritePath " +
 					"from tbl_baseIngredient b " +
 					"inner join tbl_ItemCategory c on b.CategoryId = c.Pkey " +
-					"inner join tbl_ItemCategory d on c.ParentCategory = d.PKey;";
+					"inner join tbl_ItemCategory d on c.ParentCategory = d.PKey " +
+					"where c.Pkey == " + (int) category + ";";
 		}
 		else if (EnumHelper.GetItemType (category) == "Equipment" && tableName != string.Empty) 
 		{
@@ -132,71 +92,28 @@ public class DataAccess : MonoBehaviour
 					"d.PKey as CategoryId, d.Name as CategoryName, d.SpritePath as CategorySpritePath " +
 					"from tbl_baseEquipment b " +
 					"inner join tbl_ItemCategory c on b.CategoryId = c.Pkey " +
-					"inner join tbl_ItemCategory d on c.ParentCategory = d.PKey;";
+					"inner join tbl_ItemCategory d on c.ParentCategory = d.PKey " +
+					"where c.Pkey == " + (int) category + ";";
 		}
 		
 		SqliteDatabase sqlDB = new SqliteDatabase(_DBNAME);
 		DataTable table = sqlDB.ExecuteQuery (query);
 		
 		List<Item> returnValue = new List<Item> ();
+		associatedSubcategories = new List<Subcategory> ();
+		associatedCategories = new List<Category> ();
 		foreach(DataRow row in table.Rows)
 		{
 			Subcategory sub = null;
 			Category cat = null;
 			Item it = BuildItemFromRow(category, row, out sub, out cat);
-			//TODO: return List<Subcategory> and List<Category> as well to populate inventories more efficiently
 			returnValue.Add (it);
+			associatedSubcategories.Add(sub);
+			associatedCategories.Add (cat);
+
 		}
 		return returnValue;
 	}
-
-	//TODO: is this required?  if so, fix the query
-	/*
-	private static Item GetItem(ItemCategory category, int itemId, out Subcategory sub, out Category cat)
-	{
-		string query = string.Empty;
-		
-		if (EnumHelper.GetItemType (category) == "Ingredient") 
-		{
-			query = string.Format ("select a.*, " +
-			                       "b.Name, b.Description, b.Attribute1, b.Attribute2, b.Attribute3, b.Attribute1Ppg, b.Attribute2Ppg, b.Attribute3Ppg, b.CharacterLevelRequired, b.Cost, b.SpritePath,  " +
-			                       "c.Name as SubCategoryName, c.Pkey as SubCategoryId, c.SpritePath as SubCategorySpritePath, " +
-			                       "d.PKey as CategoryId, d.Name as CategoryName, d.SpritePath as CategorySpritePath " +
-			                       "from {0} a  " +
-			                       "inner join tbl_baseIngredient b on a.Pkey = b.Pkey " +
-			                       "inner join tbl_ItemCategory c on b.CategoryId = c.Pkey " +
-			                       "inner join tbl_ItemCategory d on c.ParentCategory = d.PKey " +
-			                       "where a.Pkey = {1}", EnumHelper.GetDbTableName(category), itemId);
-
-		}
-		else if (EnumHelper.GetItemType (category) == "Equipment") 
-		{
-			query = string.Format ("select a.*, " +
-			                       "b.Name, b.Description, b.KitchenLevelRequired, b.CellarLevelRequired, b.CharacterLevelRequired, b.Cost, b.SpritePath,  " +
-			                       "c.Name as SubCategoryName, c.Pkey as SubCategoryId, c.SpritePath as SubCategorySpritePath, " +
-			                       "d.PKey as CategoryId, d.Name as CategoryName, d.SpritePath as CategorySpritePath " +
-			                       "from {0} a  " +
-			                       "inner join tbl_baseEquipment b on a.Pkey = b.Pkey " +
-			                       "inner join tbl_ItemCategory c on b.CategoryId = c.Pkey " +
-			                       "inner join tbl_ItemCategory d on c.ParentCategory = d.PKey " +
-			                       "where a.Pkey = {1}", EnumHelper.GetDbTableName(category), itemId);
-		}*
-				
-		SqliteDatabase sqlDB = new SqliteDatabase(_DBNAME);
-		DataTable table = sqlDB.ExecuteQuery (query);
-		if (table.Rows.Count > 0) 
-		{
-			DataRow row = table.Rows[0];
-			return BuildItemFromRow(category, row, out sub, out cat);
-
-		}
-		else
-		{
-			sub = null;
-			cat = null;
-			return null;
-		}
-	}*/
 	
 	private static Item BuildItemFromRow(ItemCategory category, DataRow row, out Subcategory sub, out Category cat)
 	{
@@ -228,41 +145,29 @@ public class DataAccess : MonoBehaviour
 		case ItemCategory.Finning:
 			return BuildChemicalFromDataRow(row, out sub, out cat);
 		case ItemCategory.BaseKit:
-			//TODO: fill object properties from data row's values
-			return new BaseKit();
+			return BuildBaseKitFromDataRow(row, out sub, out cat);
 		case ItemCategory.BottlingEquipment:
-			//TODO: fill object properties from data row's values
-			return new Equipment();
+			return BuildBottlingEquipmentFromDataRow(row, out sub, out cat);
 		case ItemCategory.Chiller:
-			//TODO: fill object properties from data row's values
-			return new Chiller();
+			return BuildChillerFromDataRow(row, out sub, out cat);
 		case ItemCategory.Container:
-			//TODO: fill object properties from data row's values
-			return new Container();
+			return BuildContainerFromDataRow(row, out sub, out cat);
 		case ItemCategory.Fermenter:
-			//TODO: fill object properties from data row's values
-			return new Fermenter();
+			return BuildFermenterFromDataRow(row, out sub, out cat);
 		case ItemCategory.FermenterTemperatureControl:
-			//TODO: fill object properties from data row's values
-			return new FermenterTemperatureControl();
+			return BuildFermenterTemperatureControlFromDataRow(row, out sub, out cat);
 		case ItemCategory.Filter:
-			//TODO: fill object properties from data row's values
-			return new Filter();
+			return BuildFilterFromDataRow(row, out sub, out cat);
 		case ItemCategory.Grinder:
-			//TODO: fill object properties from data row's values
-			return new Grinder();
+			return BuildGrinderFromDataRow(row, out sub, out cat);
 		case ItemCategory.Mashtun:
-			//TODO: fill object properties from data row's values
-			return new Mashtun();
+			return BuildMashtunFromDataRow(row, out sub, out cat);
 		case ItemCategory.MeasuringInstrument:
-			//TODO: fill object properties from data row's values
-			return new MeasuringInstrument();
+			return BuildMeasuringInstrumentFromDataRow(row, out sub, out cat);
 		case ItemCategory.Pot:
-			//TODO: fill object properties from data row's values
-			return  new Pot();
+			return BuildPotFromDataRow(row, out sub, out cat);
 		case ItemCategory.Sanitizer:
-			//TODO: fill object properties from data row's values
-			return new Sanitizer();
+			return BuildSanitizerFromDataRow(row, out sub, out cat);
 		default:
 			return null;
 		}
@@ -320,7 +225,8 @@ public class DataAccess : MonoBehaviour
 	private static Equipment BuildBaseEquipmentFromDataRow(DataRow row, out Subcategory sub, out Category cat)
 	{
 		Equipment eq = new Equipment (BuildBaseItemFromDataRow (row, out sub, out cat));
-		//TODO: load kitchen and cellar levels
+		eq.CellarLevelRequired = (int)row["CellarLevelRequired"];
+		eq.KitchenLevelRequired = (int)row["KitchenLevelRequired"];
 		return eq;
 	}
 
@@ -336,7 +242,60 @@ public class DataAccess : MonoBehaviour
 	private static Ingredient BuildBaseIngredientFromDataRow(DataRow row, out Subcategory sub, out Category cat)
 	{
 		Ingredient ing = new Ingredient(BuildBaseItemFromDataRow (row, out sub, out cat));
-		//TODO: load attributes
+
+		string attribute1 = string.Empty;
+		string attribute2 = string.Empty;
+		string attribute3 = string.Empty;
+		int attribute1Ppg = 0;
+		int attribute2Ppg = 0;
+		int attribute3Ppg = 0;
+
+		if (row.ContainsKey("Attribute1") && row["Attribute1"] != null) 
+		{
+			attribute1 = row ["Attribute1"].ToString ();
+		}
+
+		if (row.ContainsKey("Attribute2") && row["Attribute2"] != null) 
+		{
+			attribute2 = row ["Attribute2"].ToString ();
+		}
+
+		if (row.ContainsKey("Attribute3") && row["Attribute3"] != null) 
+		{
+			attribute3 = row ["Attribute3"].ToString ();
+		}
+		if (row.ContainsKey("Attribute1Ppg")) 
+		{
+			attribute1Ppg = (int)row ["Attribute1Ppg"];
+		}
+		
+		if (row.ContainsKey("Attribute2Ppg")) 
+		{
+			attribute2Ppg = (int) row ["Attribute2Ppg"];
+		}
+		
+		if (row.ContainsKey("Attribute3Ppg")) 
+		{
+			attribute3Ppg = (int) row ["Attribute3Ppg"];
+		}
+
+		ing.Attributes = new Dictionary<string, double> ();
+
+		if (attribute1 != string.Empty) 
+		{
+			ing.Attributes.Add(attribute1,attribute1Ppg);
+		}
+
+		if (attribute2 != string.Empty) 
+		{
+			ing.Attributes.Add(attribute2, attribute2Ppg);
+		}
+
+		if (attribute3 != string.Empty) 
+		{
+			ing.Attributes.Add(attribute3, attribute3Ppg);
+		}
+
 		return ing;
 	}
 
@@ -374,6 +333,113 @@ public class DataAccess : MonoBehaviour
 		return val;
 	}
 
-	//TODO: build functions for all other categories
+	private static BaseKit BuildBaseKitFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		BaseKit val = new BaseKit(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		val.InfectionFactor = (int)row["InfectionFactor"];
+		return val;
+	}
+
+	private static Equipment BuildBottlingEquipmentFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		Equipment val = BuildBaseEquipmentFromDataRow (row, out sub, out cat);
+		//Nothing else to load
+		return val;
+	}
+	
+	private static Chiller BuildChillerFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		Chiller val = new Chiller(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		val.ClarityFactor = (int)row["ClarityFactor"];
+		val.AttenuationFactor = (int)row["AttenuationFactor"];
+		val.InfectionFactor = (int)row["InfectionFactor"];
+		return val;
+	}
+
+	private static Container BuildContainerFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		Container val = new Container(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		val.RequiredEquipmentId = (int)row["RequiredEquipmentId"];
+		val.Volume = (double)row["Volume"];
+		return val;
+	}
+
+	private static Fermenter BuildFermenterFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		Fermenter val = new Fermenter(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		val.Volume = (int)row["Volume"];
+		val.AttenuationFactor = (int)row["AttenuationFactor"];
+		val.ClarityFactor = (int)row["ClarityFactor"];
+		val.InfectionFactor = (int)row["InfectionFactor"];
+
+		if (row.ContainsKey("AttributeName") && row["AttributeName"] != null) 
+		{
+			val.AttributeName = row["AttributeName"].ToString();
+		}
+
+		if (row.ContainsKey("AttributeValue")) 
+		{
+			val.AttributeValue = (int)row["AttributeValue"];
+		}
+
+		return val;
+	}
+
+	private static FermenterTemperatureControl BuildFermenterTemperatureControlFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		FermenterTemperatureControl val = new FermenterTemperatureControl(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		val.Volume = (int)row["Volume"];
+		val.TemperatureFactor = (int)row["TemperatureFactor"];
+		return val;
+	}
+
+	private static Filter BuildFilterFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		Filter val = new Filter(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		val.ClarityFactor = (int)row["ClarityFactor"];
+		val.InfectionFactor = (int)row["InfectionFactor"];
+		return val;
+	}
+
+	private static Grinder BuildGrinderFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		Grinder val = new Grinder(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		val.ConversionFactor = (int)row["ConversionFactor"];
+		return val;
+	}
+
+	private static Mashtun BuildMashtunFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		Mashtun val = new Mashtun(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		val.MaxGrain = (int)row["MaxGrain"];
+		val.ConversionFactor = (int)row["ConversionFactor"];
+		return val;
+	}
+
+	private static MeasuringInstrument BuildMeasuringInstrumentFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		MeasuringInstrument val = new MeasuringInstrument(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		val.WeightPrecision = (int)row["WeightPrecision"];
+		val.TemperaturePrecision = (int)row["TemperaturePrecision"];
+		val.IbuPrecision = (int)row["IbuPrecision"];
+		val.SrmPrecision = (int)row["SrmPrecision"];
+		val.GravityPrecision = (int)row["GravityPrecision"];
+		val.InfectionFactor = (int)row["InfectionFactor"];
+		return val;
+	}
+
+	private static Pot BuildPotFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		Pot val = new Pot(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		val.Volume = (int)row["Volume"];
+		return val;
+	}
+
+	private static Sanitizer BuildSanitizerFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	{
+		Sanitizer val = new Sanitizer(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		val.InfectionReduction = (int)row["InfectionReduction"];
+		return val;
+	}
 }
 

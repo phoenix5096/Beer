@@ -1,5 +1,5 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs">
     <Files>
       <File FileName="Assets\Scripts\GameData.cs" Line="1" Column="1" />
@@ -10,12 +10,12 @@
       <File FileName="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BrewShop\BrewShopInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BrewShop\BrewShopSetup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" Line="136" Column="4" />
+      <File FileName="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" Line="40" Column="94" />
       <File FileName="Assets\Scripts\_Obsolete\AnimatedGifDrawer.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\DataAccess\DataTable.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" Line="269" Column="27" />
+      <File FileName="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenuScreen\MainMenuInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Enums\ItemCategory.cs" Line="134" Column="25" />
+      <File FileName="Assets\Scripts\BeerGameLib\Enums\ItemCategory.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Carnival\CarnivalLoad.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\IntroVideoScreen\IntroVideoScreenSetup.cs" Line="1" Column="1" />
@@ -25,29 +25,29 @@
       <File FileName="Assets\Scripts\Options\OptionsInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenuScreen\MainMenuScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\Classes\Category.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Shop.cs" Line="10" Column="101" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Shop.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\Classes\Subcategory.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\Classes\Item.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Inventory.cs" Line="49" Column="37" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Inventory.cs" Line="63" Column="3" />
       <File FileName="Assets\Scripts\ButtonTextHighlighting.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\FermenterTemperatureControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Chiller.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Filter.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Equipment.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Container.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Sanitizer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\BaseKit.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Grinder.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\MeasuringInstrument.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Fermenter.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Pot.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Mashtun.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Enums\EnumHelper.cs" Line="55" Column="24" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\FermenterTemperatureControl.cs" Line="14" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Chiller.cs" Line="17" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Filter.cs" Line="12" Column="18" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Equipment.cs" Line="15" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Container.cs" Line="18" Column="18" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Sanitizer.cs" Line="13" Column="3" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\BaseKit.cs" Line="12" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Grinder.cs" Line="11" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\MeasuringInstrument.cs" Line="26" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Fermenter.cs" Line="41" Column="3" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Pot.cs" Line="11" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Mashtun.cs" Line="14" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Enums\EnumHelper.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\Enums\TODO.txt" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Ingredient.cs" Line="10" Column="1" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Fermentable.cs" Line="13" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Ingredient.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Fermentable.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Hop.cs" Line="12" Column="14" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Yeast.cs" Line="15" Column="3" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Yeast.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -56,6 +56,7 @@
             <Node name="Scripts" expanded="True">
               <Node name="BeerGameLib" expanded="True">
                 <Node name="Classes" expanded="True">
+                  <Node name="Equipment" expanded="True" />
                   <Node name="Ingredients" expanded="True" />
                 </Node>
                 <Node name="DataAccess" expanded="True">
@@ -83,8 +84,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BeerGameLib\Ingredients\Shop.cs" line="45" />
-      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" line="157" />
-      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" line="186" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>

@@ -105,7 +105,7 @@ public enum ItemCategory
 	Fermenter = 24,
 
 	[Description("Measuring Instruments")]
-	[DbTableName("tbl_MeasuringInstrumentEquipment")]
+	[DbTableName("tbl_MeasuringEquipment")]
 	[ItemType("Equipment")]
 	MeasuringInstrument = 25,
 

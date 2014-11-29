@@ -18,8 +18,25 @@ public class Fermenter : Equipment
 	public int InfectionFactor { get; set; }
 	
 	///An attribute that this aging tank imparts to the beer when stored in it
-	public string Attribute { get; set; }
+	public string AttributeName { get; set; }
 	
 	///The factor at which the attribute is applied to the beer (ex: 1/month)
 	public int AttributeValue { get; set; }
+
+	public Fermenter()
+	{
+	}
+	
+	public Fermenter(Equipment e)
+	{
+		this.KitchenLevelRequired = e.KitchenLevelRequired;
+		this.CellarLevelRequired = e.CellarLevelRequired;
+		this.CharacterLevelRequired = e.CharacterLevelRequired;
+		this.Cost = e.Cost;
+		this.Description = e.Description;
+		this.Id = e.Id;
+		this.Name = e.Name;
+		this.SpriteLocation = e.SpriteLocation;
+		this.SubcategoryId = e.SubcategoryId;
+	}
 }
