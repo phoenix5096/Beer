@@ -3,17 +3,21 @@ using System.Collections;
 
 public class ButtonTextHighlighting : MonoBehaviour {
 
+	public Color HighlightedColor = Color.red;
+	public Color RegularColor = Color.white;
+
 	TextMesh tm;
 	void Awake()
 	{
 		tm = GetComponent<TextMesh> ();
+		OnMouseExit ();
 	}
 	
 	void OnMouseEnter()
 	{
 		if (tm != null) 
 		{
-			tm.color = Color.red;
+			tm.color = HighlightedColor;
 		}
 	}
 	
@@ -21,7 +25,7 @@ public class ButtonTextHighlighting : MonoBehaviour {
 	{
 		if (tm != null)
 		{
-			tm.color = Color.white;
+			tm.color = RegularColor;
 		}
 	}
 }

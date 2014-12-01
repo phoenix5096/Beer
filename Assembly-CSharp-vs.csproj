@@ -72,8 +72,10 @@
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Enums\EnumHelper.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Enums\ItemCategory.cs" />
-     <Compile Include="Assets\Scripts\BrewShop\BrewShopInput.cs" />
-     <Compile Include="Assets\Scripts\BrewShop\BrewShopSetup.cs" />
+     <Compile Include="Assets\Scripts\BrewShop\BrewShopBuyInput.cs" />
+     <Compile Include="Assets\Scripts\BrewShop\BrewShopBuySetup.cs" />
+     <Compile Include="Assets\Scripts\BrewShop\BrewShopMainInput.cs" />
+     <Compile Include="Assets\Scripts\BrewShop\BrewShopMainSetup.cs" />
      <Compile Include="Assets\Scripts\ButtonTextHighlighting.cs" />
      <Compile Include="Assets\Scripts\Carnival\CarnivalInput.cs" />
      <Compile Include="Assets\Scripts\Carnival\CarnivalLoad.cs" />
@@ -83,8 +85,6 @@
      <Compile Include="Assets\Scripts\CityMapScreen\CityMapButtonInput.cs" />
      <Compile Include="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />
-     <Compile Include="Assets\Scripts\GroceryStore\GroceryInput.cs" />
-     <Compile Include="Assets\Scripts\GroceryStore\GrocerySetup.cs" />
      <Compile Include="Assets\Scripts\Home\HomeInput.cs" />
      <Compile Include="Assets\Scripts\Home\HomeSetup.cs" />
      <Compile Include="Assets\Scripts\IntroVideoScreen\IntroVideoScreenSetup.cs" />

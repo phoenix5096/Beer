@@ -9,7 +9,7 @@ public class CityMapButtonInput : MonoBehaviour {
 	{
 		if (buttonId == "Brew") 
 		{
-			Application.LoadLevel ("BrewShop");
+			Application.LoadLevel ("BrewShop_Main");
 		}
 		else if (buttonId == "Home") 
 		{
@@ -17,11 +17,11 @@ public class CityMapButtonInput : MonoBehaviour {
 		}
 		else if (buttonId == "Tool") 
 		{
-			Application.LoadLevel ("ToolStore");
+			Application.LoadLevel ("ToolStore_Main");
 		}
 		else if (buttonId == "Grocery") 
 		{
-			Application.LoadLevel ("GroceryStore");
+			//TODO: implement
 		}
 		else if (buttonId == "Carnival") 
 		{

@@ -31,6 +31,11 @@ public class ScrollingItemMenu : MonoBehaviour
 		return values [selectedIndex];
 	}
 
+	public bool IsScrolling()
+	{
+		return ScrollingRight || ScrollingLeft;
+	}
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -153,11 +158,48 @@ public class ScrollingItemMenu : MonoBehaviour
 				slots[i].transform.position = new Vector3 (newPosX, newPosY, newPosZ);
 				slots[i].transform.localScale = new Vector3 (newScaleX, newScaleY, newScaleZ);
 
-				//make sure we do not go over
-				if (slots[i].transform.position.x <= slotOriginalPositions[i-1].x)
+				if (slotOriginalPositions[i].x >= slotOriginalPositions[i-1].x &&
+				    slotOriginalPositions[i].y >= slotOriginalPositions[i-1].y)
 				{
-					slots[i].transform.position = slotOriginalPositions[i-1];
-					slots[i].transform.localScale = slotOriginalScales[i-1];
+					if (slots[i].transform.position.x <= slotOriginalPositions[i-1].x
+					    && slots[i].transform.position.y <= slotOriginalPositions[i-1].y)
+					{
+					    slots[i].transform.position = slotOriginalPositions[i-1];
+					    slots[i].transform.localScale = slotOriginalScales[i-1];
+					}
+				}
+				else if (slotOriginalPositions[i].x >= slotOriginalPositions[i-1].x &&
+				        slotOriginalPositions[i].y < slotOriginalPositions[i-1].y)
+				{
+					if (slots[i].transform.position.x <= slotOriginalPositions[i-1].x
+					    && slots[i].transform.position.y >= slotOriginalPositions[i-1].y)
+					{
+						slots[i].transform.position = slotOriginalPositions[i-1];
+						slots[i].transform.localScale = slotOriginalScales[i-1];
+					}
+					
+				}
+				else if (slotOriginalPositions[i].x < slotOriginalPositions[i-1].x &&
+				         slotOriginalPositions[i].y >= slotOriginalPositions[i-1].y)
+				{
+					if (slots[i].transform.position.x >= slotOriginalPositions[i-1].x
+					    && slots[i].transform.position.y <= slotOriginalPositions[i-1].y)
+					{
+						slots[i].transform.position = slotOriginalPositions[i-1];
+						slots[i].transform.localScale = slotOriginalScales[i-1];
+					}
+					
+				}
+				else if (slotOriginalPositions[i].x < slotOriginalPositions[i-1].x &&
+				         slotOriginalPositions[i].y < slotOriginalPositions[i-1].y)
+				{
+					if (slots[i].transform.position.x >= slotOriginalPositions[i-1].x
+					    && slots[i].transform.position.y >= slotOriginalPositions[i-1].y)
+					{
+						slots[i].transform.position = slotOriginalPositions[i-1];
+						slots[i].transform.localScale = slotOriginalScales[i-1];
+					}
+					
 				}
 			}
 
@@ -196,10 +238,48 @@ public class ScrollingItemMenu : MonoBehaviour
 				slots[i].transform.localScale = new Vector3 (newScaleX, newScaleY, newScaleZ);
 				
 				//make sure we do not go over
-				if (slots[i].transform.position.x >= slotOriginalPositions[i+1].x)
+				if (slotOriginalPositions[i].x >= slotOriginalPositions[i+1].x &&
+				    slotOriginalPositions[i].y >= slotOriginalPositions[i+1].y)
 				{
-					slots[i].transform.position = slotOriginalPositions[i+1];
-					slots[i].transform.localScale = slotOriginalScales[i+1];
+					if (slots[i].transform.position.x <= slotOriginalPositions[i+1].x
+					    && slots[i].transform.position.y <= slotOriginalPositions[i+1].y)
+					{
+						slots[i].transform.position = slotOriginalPositions[i+1];
+						slots[i].transform.localScale = slotOriginalScales[i+1];
+					}
+				}
+				else if (slotOriginalPositions[i].x >= slotOriginalPositions[i+1].x &&
+				         slotOriginalPositions[i].y < slotOriginalPositions[i+1].y)
+				{
+					if (slots[i].transform.position.x <= slotOriginalPositions[i+1].x
+					    && slots[i].transform.position.y >= slotOriginalPositions[i+1].y)
+					{
+						slots[i].transform.position = slotOriginalPositions[i+1];
+						slots[i].transform.localScale = slotOriginalScales[i+1];
+					}
+					
+				}
+				else if (slotOriginalPositions[i].x < slotOriginalPositions[i+1].x &&
+				         slotOriginalPositions[i].y >= slotOriginalPositions[i+1].y)
+				{
+					if (slots[i].transform.position.x >= slotOriginalPositions[i+1].x
+					    && slots[i].transform.position.y <= slotOriginalPositions[i+1].y)
+					{
+						slots[i].transform.position = slotOriginalPositions[i+1];
+						slots[i].transform.localScale = slotOriginalScales[i+1];
+					}
+					
+				}
+				else if (slotOriginalPositions[i].x < slotOriginalPositions[i+1].x &&
+				         slotOriginalPositions[i].y < slotOriginalPositions[i+1].y)
+				{
+					if (slots[i].transform.position.x >= slotOriginalPositions[i+1].x
+					    && slots[i].transform.position.y >= slotOriginalPositions[i+1].y)
+					{
+						slots[i].transform.position = slotOriginalPositions[i+1];
+						slots[i].transform.localScale = slotOriginalScales[i+1];
+					}
+					
 				}
 			}
 			
