@@ -14,5 +14,8 @@ public class BrewShopMainSetup : MonoBehaviour
 		menu.values.Add ("Repair");
 		menu.values.Add ("Talk");
 		menu.values.Add ("Exit");
+
+		DialogBox dialogBox = GameObject.Find ("DialogWindow").GetComponent<DialogBox>();
+		dialogBox.Initialize ();
 	}
 }

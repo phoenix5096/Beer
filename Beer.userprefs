@@ -1,15 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameData.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DialogBox.cs">
     <Files>
       <File FileName="Assets\Scripts\GameData.cs" Line="13" Column="59" />
       <File FileName="Assets\Scripts\LoadingScreen\LoadingScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionMenuInput.cs" Line="15" Column="4" />
-      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="258" Column="24" />
+      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="81" Column="19" />
       <File FileName="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" Line="15" Column="3" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopBuyInput.cs" Line="20" Column="33" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopBuySetup.cs" Line="10" Column="3" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopBuyInput.cs" Line="57" Column="3" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopBuySetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\_Obsolete\AnimatedGifDrawer.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\DataAccess\DataTable.cs" Line="1" Column="1" />
@@ -20,7 +20,7 @@
       <File FileName="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\IntroVideoScreen\IntroVideoScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Options\OptionsSetup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TopDisplayLogic.cs" Line="43" Column="51" />
+      <File FileName="Assets\Scripts\TopDisplayLogic.cs" Line="26" Column="3" />
       <File FileName="Assets\Scripts\_Obsolete\BackgroundStretcher.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Options\OptionsInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenuScreen\MainMenuScreenSetup.cs" Line="1" Column="1" />
@@ -48,10 +48,13 @@
       <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Fermentable.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Hop.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Yeast.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CityMapScreen\CityMapButtonInput.cs" Line="15" Column="4" />
+      <File FileName="Assets\Scripts\CityMapScreen\CityMapButtonInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BrewShop\BrewShopMainInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopMainSetup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\StringFormatter.cs" Line="21" Column="6" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopMainSetup.cs" Line="19" Column="1" />
+      <File FileName="Assets\Scripts\StringFormatter.cs" Line="9" Column="1" />
+      <File FileName="Assets\Scripts\ToolStore\ToolStoreInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ToolStore\ToolStoreSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DialogBox.cs" Line="74" Column="13" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -59,9 +62,7 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
               <Node name="BrewShop" expanded="True" />
-              <Node name="CharacterSelectionScreen" expanded="True" />
-              <Node name="CityMapScreen" expanded="True" />
-              <Node name="GameData.cs" selected="True" />
+              <Node name="DialogBox.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -71,11 +72,8 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>SubCategories</Value>
-          <Value>ItemsBySubCategory[0]</Value>
-          <Value>EnumHelper.GetItemType (category)</Value>
-          <Value>query</Value>
-          <Value>row.Keys.dictionary.Keys.dictionary.Values</Value>
+          <Value>_leftRenderer.transform.position.normalized.x</Value>
+          <Value>_leftRenderer.bounds.min.x - _leftRenderer.bounds.max.x</Value>
         </State>
       </Pad>
     </Pads>
@@ -84,9 +82,11 @@
     <BreakpointStore>
       <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BeerGameLib\Ingredients\Shop.cs" line="45" />
       <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\GroceryStore\GroceryInput.cs" line="40" />
+      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\DialogBox.cs" line="104" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" line="119" offsetX="480" offsetY="1888" expression="query" liveUpdate="False" />
+    <Watch file="Assets\Scripts\DialogBox.cs" line="144" offsetX="1376" offsetY="2288" expression="lblText" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

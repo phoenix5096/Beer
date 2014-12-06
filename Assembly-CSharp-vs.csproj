@@ -84,6 +84,7 @@
      <Compile Include="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" />
      <Compile Include="Assets\Scripts\CityMapScreen\CityMapButtonInput.cs" />
      <Compile Include="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" />
+     <Compile Include="Assets\Scripts\DialogBox.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />
      <Compile Include="Assets\Scripts\Home\HomeInput.cs" />
      <Compile Include="Assets\Scripts\Home\HomeSetup.cs" />
