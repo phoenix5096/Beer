@@ -75,7 +75,7 @@
      <Compile Include="Assets\Scripts\BrewShop\BrewShopBuyInput.cs" />
      <Compile Include="Assets\Scripts\BrewShop\BrewShopBuySetup.cs" />
      <Compile Include="Assets\Scripts\BrewShop\BrewShopMainInput.cs" />
-     <Compile Include="Assets\Scripts\BrewShop\BrewShopMainSetup.cs" />
+     <Compile Include="Assets\Scripts\BrewShop\BrewShopScrollingMenuSetup.cs" />
      <Compile Include="Assets\Scripts\ButtonTextHighlighting.cs" />
      <Compile Include="Assets\Scripts\Carnival\CarnivalInput.cs" />
      <Compile Include="Assets\Scripts\Carnival\CarnivalLoad.cs" />

@@ -2,20 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class BrewShopMainSetup : MonoBehaviour 
+public class BrewShopScrollingMenuSetup : MonoBehaviour 
 {
 	// Use this for initialization
 	void Start () {
 		//setup the menu
-		ScrollingItemMenu menu = GameObject.Find ("ScrollingShopMenu").GetComponent<ScrollingItemMenu>();
+		ScrollingItemMenu menu = GameObject.Find ("ScrollingMenu").GetComponent<ScrollingItemMenu>();
 		menu.values = new List<System.Object>();
 		menu.values.Add ("Buy");
 		menu.values.Add ("Sell");
 		menu.values.Add ("Repair");
 		menu.values.Add ("Talk");
 		menu.values.Add ("Exit");
-
-		DialogBox dialogBox = GameObject.Find ("DialogWindow").GetComponent<DialogBox>();
-		dialogBox.Initialize ();
 	}
 }

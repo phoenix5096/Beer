@@ -10,7 +10,7 @@ public class BrewShopMainInput : MonoBehaviour {
 	{
 		if (theMenu == null) 
 		{
-			theMenu = GameObject.Find ("ScrollingShopMenu").GetComponent<ScrollingItemMenu> ();
+			theMenu = GameObject.Find ("ScrollingMenu").GetComponent<ScrollingItemMenu> ();
 		}
 	}
 

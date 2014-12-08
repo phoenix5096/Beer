@@ -12,12 +12,21 @@ public class BrewShopBuyInput : MonoBehaviour {
 	ScrollingItemMenu itemMenu;
 	ScrollingItemMenu quantityMenu;
 	ScrollingItemMenu numericalMenu;
+	SpriteRenderer confirmationBox;
+	SpriteRenderer greyOverlay;
 	GUIText descriptionLabel;
-
+	GUIText costLabel;
+	GUIText confirmationLabel;
+	GUIText categoryLabel;
+	GUIText subcategoryLabel;
+	GUIText itemLabel;
+	
 	private System.Object selectedCategory = null;
 	private System.Object selectedSubCategory = null;
 	private System.Object selectedItem = null;
 	private int selectedQuantity = 0;
+
+	public static bool IsDisplayingConfirmation = false;
 
 	private void LoadComponents()
 	{
@@ -51,6 +60,40 @@ public class BrewShopBuyInput : MonoBehaviour {
 			descriptionLabel = GameObject.Find ("DescriptionLabel").GetComponent<GUIText>();
 		}
 
+		if (costLabel == null) 
+		{
+			costLabel =	GameObject.Find ("CostLabel").GetComponent<GUIText>();
+		}
+
+		if (confirmationLabel == null) 
+		{
+			confirmationLabel =	GameObject.Find ("ConfirmationLabel").GetComponent<GUIText>();
+		}
+
+		if (categoryLabel == null) 
+		{
+			categoryLabel =	GameObject.Find ("CategoryText").GetComponent<GUIText>();
+		}
+
+		if (subcategoryLabel == null) 
+		{
+			subcategoryLabel =	GameObject.Find ("SubcategoryText").GetComponent<GUIText>();
+		}
+
+		if (itemLabel == null) 
+		{
+			itemLabel =	GameObject.Find ("ItemText").GetComponent<GUIText>();
+		}
+
+		if (confirmationBox == null)
+		{
+			confirmationBox = GameObject.Find ("ConfirmationBox").GetComponent<SpriteRenderer>();
+		}
+
+		if (greyOverlay== null)
+		{
+			greyOverlay = GameObject.Find ("GreyOverlay").GetComponent<SpriteRenderer>();
+		}
 	}
 
 	void OnMouseUp()
@@ -59,51 +102,95 @@ public class BrewShopBuyInput : MonoBehaviour {
 
 		if (ButtonId == "Cancel") 
 		{
-			Application.LoadLevel ("BrewShop_Main");
+			if (IsDisplayingConfirmation)
+			{
+				HideConfirmation();
+			}
+			else
+			{
+				Application.LoadLevel ("BrewShop_Main");
+			}
 		}
 		else if (ButtonId == "Buy") 
 		{
-			//todo: implement: add "itemMenu.getSelectedValue()" to the inventory and give feedback
+			if (IsDisplayingConfirmation)
+			{
+				//todo: implement: add "itemMenu.getSelectedValue()" to the inventory and give feedback
+			}
+			else
+			{
+				DisplayConfirmation();
+			}
 		}
 		else if (ButtonId == "NextCategory") 
 		{
-			ScrollCategoryRight ();
+			if (!IsDisplayingConfirmation)
+			{
+				ScrollCategoryRight ();
+			}
 		}
 		else if (ButtonId == "PrevCategory") 
 		{
-			ScrollCategoryLeft ();
+			if (!IsDisplayingConfirmation)
+			{
+				ScrollCategoryLeft ();
+			}
 		}
 		else if (ButtonId == "NextSubCategory") 
 		{
-			ScrollSubCategoryRight ();
+			if (!IsDisplayingConfirmation)
+			{
+				ScrollSubCategoryRight ();
+			}
 		}
 		else if (ButtonId == "PrevSubCategory") 
 		{
-			ScrollSubCategoryLeft ();
+			if (!IsDisplayingConfirmation)
+			{
+				ScrollSubCategoryLeft ();
+			}
 		}
 		else if (ButtonId == "NextItem") 
 		{
-			ScrollItemRight ();
+			if (!IsDisplayingConfirmation)
+			{
+				ScrollItemRight ();
+			}
 		}
 		else if (ButtonId == "PrevItem") 
 		{
-			ScrollItemLeft ();
+			if (!IsDisplayingConfirmation)
+			{
+				ScrollItemLeft ();
+			}
 		}
 		else if (ButtonId == "NextQty") 
 		{
-			ScrollQtyRight ();
+			if (!IsDisplayingConfirmation)
+			{
+				ScrollQtyRight ();
+			}
 		}
 		else if (ButtonId == "PrevQty") 
 		{
-			ScrollQtyLeft ();
+			if (!IsDisplayingConfirmation)
+			{
+				ScrollQtyLeft ();
+			}
 		}
 		else if (ButtonId == "NumUp")
 		{
-			ScrollNumUp();
+			if (!IsDisplayingConfirmation)
+			{
+				ScrollNumUp();
+			}
 		}
 		else if (ButtonId == "NumDown")
 		{
-			ScrollNumDown();
+			if (!IsDisplayingConfirmation)
+			{
+				ScrollNumDown();
+			}
 		}
 	}
 
@@ -241,20 +328,21 @@ public class BrewShopBuyInput : MonoBehaviour {
 	public void UpdateText()
 	{
 		LoadComponents ();
+
 		if (selectedCategory != null && selectedSubCategory!=null && selectedItem !=null)
 		{
-			GameObject.Find ("CategoryText").GetComponent<GUIText> ().text = (selectedCategory as Category).Name;
-			GameObject.Find ("SubcategoryText").GetComponent<GUIText> ().text = (selectedSubCategory as Subcategory).Name;
-			GameObject.Find ("ItemText").GetComponent<GUIText> ().text = (selectedItem as Item).Name;
+			categoryLabel.text = (selectedCategory as Category).Name;
+			subcategoryLabel.text = (selectedSubCategory as Subcategory).Name;
+			itemLabel.text = (selectedItem as Item).Name;
 
-			if (selectedQuantity!= null && selectedQuantity > 1)
+			/*if (selectedQuantity!= null && selectedQuantity > 1)
 			{
-				GameObject.Find ("CostLabel").GetComponent<GUIText> ().text = ((selectedItem as Item).Cost*selectedQuantity).ToString("0.00 $") + " (" + (selectedItem as Item).Cost.ToString("0.00 $") + " each)";
+				costLabel.text = ((selectedItem as Item).Cost*selectedQuantity).ToString("0.00 $") + " (" + (selectedItem as Item).Cost.ToString("0.00 $") + " each)";
 			}
 			else
-			{
-				GameObject.Find ("CostLabel").GetComponent<GUIText> ().text = (selectedItem as Item).Cost.ToString("0.00 $");
-			}
+			{*/
+				costLabel.text = (selectedItem as Item).Cost.ToString("0.00 $");
+			/*}*/
 
 			if ((selectedItem as Item).Description != string.Empty && (selectedItem as Item).Description != null)
 			{
@@ -270,5 +358,47 @@ public class BrewShopBuyInput : MonoBehaviour {
 		{
 			descriptionLabel.text = "NULL";
 		}
+	}
+
+	public void DisplayConfirmation()
+	{
+		LoadComponents ();
+		IsDisplayingConfirmation = true;
+
+		//hide the other information
+		costLabel.text = "";
+		descriptionLabel.text = "";
+
+		categoryLabel.color = new Color  (0.2F, 0.2F, 0.2F);
+		subcategoryLabel.color = new Color (0.2F, 0.2F, 0.2F);
+		itemLabel.color = new Color  (0.2F, 0.2F, 0.2F);
+			
+		//set the text
+		float totalCost = (float)((selectedItem as Item).Cost * selectedQuantity);
+		confirmationLabel.text = "Purchase " + selectedQuantity + " [OZ\\LBS\\KG] of " + (selectedItem as Item).Name + " for " + totalCost.ToString("0.00 $") + "?\n\n"
+			//+ "You currently have " + GameData.Money.ToString("0.00 $") + "\n"	
+			+ "You will have " + (GameData.Money-totalCost).ToString("0.00 $") + " left after this purchase.";	
+		confirmationLabel.GetComponent<StringFormatter> ().FormatText();
+
+		//hide the confirmation
+		confirmationBox.enabled=true;
+		greyOverlay.enabled=true;
+	}
+
+	public void HideConfirmation()
+	{
+		LoadComponents ();
+		IsDisplayingConfirmation = false;
+
+		//re populate the regular window's text
+		categoryLabel.color = Color.white;
+		subcategoryLabel.color = Color.white;
+		itemLabel.color = Color.white;
+		UpdateText();
+
+		//hide the confirmation
+		confirmationLabel.text = "";
+		confirmationBox.enabled=false;
+		greyOverlay.enabled=false;
 	}
 }

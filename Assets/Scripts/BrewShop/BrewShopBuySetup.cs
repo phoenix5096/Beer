@@ -33,13 +33,10 @@ public class BrewShopBuySetup : MonoBehaviour
 		numericalSelector.values.Add (8);
 		numericalSelector.values.Add (9);
 
-
-
 		//invoke the sub menu selection (do not trust the "onload" order of the scripts)
 		BrewShopBuyInput inputScript = GameObject.Find ("SceneLoad").GetComponent<BrewShopBuyInput>();
 		inputScript.SelectAppropriateSubCategory ();
-
-
+		inputScript.HideConfirmation ();
 
 		IsReady = true;
 	}

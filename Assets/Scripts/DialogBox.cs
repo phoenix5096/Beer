@@ -28,22 +28,30 @@ public class DialogBox : MonoBehaviour
 	private int _currentEntry = -1;
 	private bool _isScrolling = false;
 	private string _currentTextToDisplay = "";
-	private	bool _skipNextCycle = false;
 	private SpriteRenderer _leftRenderer;
 	private SpriteRenderer _rightRenderer;
 	private StringFormatter _sf;
 	private Vector3 _leftLabelPosition;
 	private Vector3 _rightLabelPosition;
+	private int lastSpaceIndex = -1;
+
 	//The UI elements
 	public GameObject iconLeft;
 	public GameObject iconRight;
 	public GUIText lblText;
+	public GameObject blinkingArrow;
 
 	//The values
 	public List<Sprite> entrySprites;
 	public List<string> entrytext;
 	public List<Position> entryPosition;
-	
+	public float TextSpeed = 0.1F;
+
+	void Start()
+	{
+		Initialize ();
+	}
+
 	void OnMouseUp()
 	{
 		Action ();
@@ -72,6 +80,7 @@ public class DialogBox : MonoBehaviour
 			}
 
 			Action();
+			StartCoroutine("ScrollText");
 		}
 	}
 
@@ -81,18 +90,38 @@ public class DialogBox : MonoBehaviour
 		{
 			_isScrolling = false;
 			lblText.text = _currentTextToDisplay;
-			_sf.FormatText();
+
+			if (_currentEntry >= entrytext.Count-1)
+			{
+				//TODO: hide arrow
+				blinkingArrow.GetComponent<SpriteRenderer>().sortingOrder=-1;
+				blinkingArrow.GetComponent<Animator>().Play("StoppedArrow");
+			}
+			else
+			{
+				blinkingArrow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+				blinkingArrow.GetComponent<Animator>().Play("BlinkingDialogBoxArrow");
+			}
 		}
 		else
 		{
 			_currentEntry++;
 			_isScrolling = true;
 
+			blinkingArrow.GetComponent<SpriteRenderer>().sortingOrder = -1;
+			blinkingArrow.GetComponent<Animator>().Play("StoppedArrow");
+
 			if (_entries.ContainsKey(_currentEntry))
 			{
+				//This measures and formats the text and stores it with the proper formatting before we start scrolling it
+				//we do this now because we need to break on a "space" and it may already be too late when calculating every character.
+				//It is also more efficient do do it only once
+				Entry ent = _entries[_currentEntry];
+				lblText.text = ent.Text;
+				_sf.FormatText();
+				_currentTextToDisplay = lblText.text;
 				lblText.text = "";
 
-				Entry ent = _entries[_currentEntry];
 				if (ent.Pos == Position.Left)
 				{
 					lblText.transform.position = _rightLabelPosition;
@@ -105,60 +134,60 @@ public class DialogBox : MonoBehaviour
 					_leftRenderer.sprite = null;
 					_rightRenderer.sprite = ent.Icon;
 				}
-				_currentTextToDisplay = ent.Text;
 			}
 		}
 	}
 
-	int lastSpaceIndex = -1;
-	// Update is called once per frame
-	void Update () {
-		if (_skipNextCycle)
-		{
-			_skipNextCycle = false;
-			return;
-			
-		}
-		
-		if (_currentTextToDisplay.Length > 0)
-		{
-			bool keepGoing = true;
+	private IEnumerator ScrollText() 
+	{
+		float delay = TextSpeed;
 
-
-			while (lblText.text.Length < _currentTextToDisplay.Length && keepGoing)
+		while(true)
+		{
+			if (_currentTextToDisplay.Length > 0 && lblText.text.Length < _currentTextToDisplay.Length)
 			{
 				char characterToAdd = _currentTextToDisplay[lblText.text.Length];
 				if (characterToAdd == ' ')
 				{
-					lastSpaceIndex = lblText.text.Length-1;
-					keepGoing = true;
+					delay = 0;
 				}
 				else if (characterToAdd == '.')
 				{
-					keepGoing = false; 
-					_skipNextCycle = true;
+					delay = TextSpeed*5;
 				}
 				else
 				{
-					keepGoing = false;
+					delay = TextSpeed;
 				}
-				
 				lblText.text += characterToAdd;
-				//TODO:doublebuffering to prevent "jumping" effect?
 
-				if (lblText.GetScreenRect().width > _sf.maxGuiTextWidth && lastSpaceIndex >= 0)
+				//TODO:doublebuffering to prevent "jumping" effect?
+				//lastSpaceIndex = lblText.text.Length-1;
+				//if (lblText.GetScreenRect().width > _sf.maxGuiTextWidth && lastSpaceIndex >= 0)
+				//{
+				//	lblText.text = lblText.text.Substring(0,lastSpaceIndex+1) + "\n" + lblText.text.Substring(lastSpaceIndex+2,lblText.text.Length-lastSpaceIndex-2);
+				//}
+
+				if (lblText.text.Length == _currentTextToDisplay.Length)
 				{
-					lblText.text = lblText.text.Substring(0,lastSpaceIndex+1) + "\n" + lblText.text.Substring(lastSpaceIndex+2,lblText.text.Length-lastSpaceIndex-2);
+					if (_currentEntry >= entrytext.Count-1)
+					{
+						//TODO: hide arrow
+						blinkingArrow.GetComponent<SpriteRenderer>().sortingOrder=-1;
+						blinkingArrow.GetComponent<Animator>().Play("StoppedArrow");
+					}
+					else
+					{
+						blinkingArrow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+						blinkingArrow.GetComponent<Animator>().Play("BlinkingDialogBoxArrow");
+					}
+					_isScrolling = false;
+					lastSpaceIndex = -1;
 				}
 			}
 
-			if (lblText.text.Length == _currentTextToDisplay.Length)
-			{
-				_isScrolling = false;
-				lastSpaceIndex = -1;
-			}
+			yield return new WaitForSeconds(delay); //TODO: 0.1 charater per second is hardcoded...
 		}
-
 
 		
 	}
