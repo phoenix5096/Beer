@@ -57,6 +57,12 @@ public class DialogBox : MonoBehaviour
 		Action ();
 	}
 
+	//TODO: test this
+	public bool IsDone()
+	{
+		return (_currentEntry >= entrytext.Count - 1 && !_isScrolling);
+	}
+
 	public void Initialize()
 	{
 		_entries = new Dictionary<int, Entry>();
@@ -160,13 +166,6 @@ public class DialogBox : MonoBehaviour
 					delay = TextSpeed;
 				}
 				lblText.text += characterToAdd;
-
-				//TODO:doublebuffering to prevent "jumping" effect?
-				//lastSpaceIndex = lblText.text.Length-1;
-				//if (lblText.GetScreenRect().width > _sf.maxGuiTextWidth && lastSpaceIndex >= 0)
-				//{
-				//	lblText.text = lblText.text.Substring(0,lastSpaceIndex+1) + "\n" + lblText.text.Substring(lastSpaceIndex+2,lblText.text.Length-lastSpaceIndex-2);
-				//}
 
 				if (lblText.text.Length == _currentTextToDisplay.Length)
 				{

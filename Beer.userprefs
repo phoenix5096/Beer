@@ -1,15 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BrewShop\BrewShopBuyInput.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DialogBox.cs">
     <Files>
+      <File FileName="Assets\Scripts\TopDisplayLogic.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GameData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\LoadingScreen\LoadingScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionMenuInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="5" Column="22" />
+      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopBuyInput.cs" Line="379" Column="6" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopBuySetup.cs" Line="40" Column="3" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopBuyInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopBuySetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\_Obsolete\AnimatedGifDrawer.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\DataAccess\DataTable.cs" Line="1" Column="1" />
@@ -20,7 +21,6 @@
       <File FileName="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\IntroVideoScreen\IntroVideoScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Options\OptionsSetup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TopDisplayLogic.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\_Obsolete\BackgroundStretcher.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Options\OptionsInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenuScreen\MainMenuScreenSetup.cs" Line="1" Column="1" />
@@ -49,24 +49,16 @@
       <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Hop.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\Classes\Ingredients\Yeast.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CityMapScreen\CityMapButtonInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopMainInput.cs" Line="13" Column="45" />
-      <File FileName="Assets\Scripts\StringFormatter.cs" Line="9" Column="1" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopMainInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\StringFormatter.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ToolStore\ToolStoreInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ToolStore\ToolStoreSetup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DialogBox.cs" Line="104" Column="5" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopScrollingMenuSetup.cs" Line="19" Column="1" />
+      <File FileName="Assets\Scripts\DialogBox.cs" Line="76" Column="51" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopScrollingMenuSetup.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Scripts" expanded="True">
-              <Node name="BrewShop" expanded="True">
-                <Node name="BrewShopBuyInput.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
@@ -82,8 +74,8 @@
     <BreakpointStore>
       <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BeerGameLib\Ingredients\Shop.cs" line="45" />
       <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\GroceryStore\GroceryInput.cs" line="40" />
-      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\DialogBox.cs" line="181" />
-      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\DialogBox.cs" line="176" />
+      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\DialogBox.cs" line="180" />
+      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\DialogBox.cs" line="175" />
       <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BrewShop\BrewShopBuyInput.cs" line="105" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
