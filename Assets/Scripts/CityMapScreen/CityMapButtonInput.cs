@@ -15,11 +15,11 @@ public class CityMapButtonInput : MonoBehaviour {
 		{
 			Application.LoadLevel ("Home");
 		}
-		else if (buttonId == "Tool") 
+		else if (buttonId == "Cafe") 
 		{
-			Application.LoadLevel ("ToolStore_Main");
+			//TODO: implement
 		}
-		else if (buttonId == "Grocery") 
+		else if (buttonId == "Library") 
 		{
 			//TODO: implement
 		}

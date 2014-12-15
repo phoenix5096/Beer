@@ -18,7 +18,7 @@ public class Inventory
 	
 	/// <summary>
 	/// The sub categories.
-	/// The key of the dictionary is the sub category ID
+	/// The key of the dictionary is the category ID
 	/// The value is a list of subcategories
 	/// 
 	/// This can be used as a lookup to know which sub categories are in a main category
@@ -41,10 +41,10 @@ public class Inventory
 	/// 
 	/// This can be used to know how many of an item is in the inventory
 	/// </summary>
-	public readonly Dictionary <int,double> ItemQuantities = new Dictionary <int,double>();
+	public readonly Dictionary <int,int> ItemQuantities = new Dictionary <int,int>();
 
 	
-	public bool Add(Item i, Subcategory s, Category c, double amount)
+	public bool Add(Item i, Subcategory s, Category c, int amount)
 	{
 		if (!MainCategories.Keys.Contains(c.Id))
 		{
@@ -79,6 +79,47 @@ public class Inventory
 		ItemQuantities[i.Id] += amount;
 
 		return true;
+	}
+
+	//if removing more than we have,  simply go back to 0;
+	public bool Remove(Item i, Subcategory s, Category c, int amount)
+	{
+		if (ItemQuantities.Keys.Contains(i.Id) && ItemQuantities[i.Id] >= amount)
+		{
+			// adjust the amount
+			ItemQuantities[i.Id] -= amount;
+
+			//remove the item entry if it is no longer required
+			if (ItemQuantities[i.Id] == 0)
+			{
+				ItemQuantities.Remove(i.Id);
+
+				//remove the mapping from the appropriate sub category
+				ItemsBySubCategory[s.Id].Remove(i);
+				
+				//remove the subcategory entry if it is no longer required
+				if (ItemsBySubCategory[s.Id].Count == 0)
+				{
+					ItemsBySubCategory.Remove(i.Id);
+
+					//remove the mapping from the appropriate category
+					SubCategories[c.Id].Remove(s);
+
+					//remove the category entry if it is no longer required
+					if (SubCategories[c.Id].Count == 0)
+					{
+						SubCategories.Remove(c.Id);
+
+						//remove the  category if it is no longer required
+						MainCategories.Remove(c.Id);
+					}
+				}
+			}
+
+			return true;
+		}
+
+		return false;
 	}
 
 

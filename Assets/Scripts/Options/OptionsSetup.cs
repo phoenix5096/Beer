@@ -5,7 +5,6 @@ public class OptionsSetup : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//TODO: LOGIC HERE
-
+		//TODO: Implement
 	}
 }

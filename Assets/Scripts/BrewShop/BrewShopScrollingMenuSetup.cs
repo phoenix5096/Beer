@@ -11,7 +11,6 @@ public class BrewShopScrollingMenuSetup : MonoBehaviour
 		menu.values = new List<System.Object>();
 		menu.values.Add ("Buy");
 		menu.values.Add ("Sell");
-		menu.values.Add ("Repair");
 		menu.values.Add ("Talk");
 		menu.values.Add ("Exit");
 	}

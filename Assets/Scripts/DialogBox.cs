@@ -69,7 +69,7 @@ public class DialogBox : MonoBehaviour
 		
 		if (entrySprites.Count != entrytext.Count || entrySprites.Count != entryPosition.Count)
 		{
-			//TODO: exception
+			//TODO: exception?
 		}
 		else
 		{
@@ -99,7 +99,6 @@ public class DialogBox : MonoBehaviour
 
 			if (_currentEntry >= entrytext.Count-1)
 			{
-				//TODO: hide arrow
 				blinkingArrow.GetComponent<SpriteRenderer>().sortingOrder=-1;
 				blinkingArrow.GetComponent<Animator>().Play("StoppedArrow");
 			}
@@ -171,7 +170,6 @@ public class DialogBox : MonoBehaviour
 				{
 					if (_currentEntry >= entrytext.Count-1)
 					{
-						//TODO: hide arrow
 						blinkingArrow.GetComponent<SpriteRenderer>().sortingOrder=-1;
 						blinkingArrow.GetComponent<Animator>().Play("StoppedArrow");
 					}
@@ -185,7 +183,7 @@ public class DialogBox : MonoBehaviour
 				}
 			}
 
-			yield return new WaitForSeconds(delay); //TODO: 0.1 charater per second is hardcoded...
+			yield return new WaitForSeconds(delay);
 		}
 
 		

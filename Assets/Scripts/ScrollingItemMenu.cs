@@ -28,7 +28,14 @@ public class ScrollingItemMenu : MonoBehaviour
 
 	public System.Object getSelectedValue()
 	{
-		return values [selectedIndex];
+		if (values.Count >0)
+		{
+			return values [selectedIndex];
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public bool IsScrolling()
@@ -142,7 +149,7 @@ public class ScrollingItemMenu : MonoBehaviour
 
 	private void Animate()
 	{
-		//TODO: this is assuming the order of the slots in the list is from left to right on the screen
+		//NOTE: this is assuming the order of the slots in the list is from left to right on the screen
 		if (ScrollingLeft) 
 		{
 			for (int i = slots.Count-1; i > 0; i--)

@@ -72,8 +72,9 @@
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Enums\EnumHelper.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Enums\ItemCategory.cs" />
-     <Compile Include="Assets\Scripts\BrewShop\BrewShopBuyInput.cs" />
-     <Compile Include="Assets\Scripts\BrewShop\BrewShopBuySetup.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Enums\ShopMode.cs" />
+     <Compile Include="Assets\Scripts\BrewShop\BrewShopBrowseInput.cs" />
+     <Compile Include="Assets\Scripts\BrewShop\BrewShopBrowseSetup.cs" />
      <Compile Include="Assets\Scripts\BrewShop\BrewShopMainInput.cs" />
      <Compile Include="Assets\Scripts\BrewShop\BrewShopScrollingMenuSetup.cs" />
      <Compile Include="Assets\Scripts\ButtonTextHighlighting.cs" />
@@ -100,11 +101,7 @@
      <Compile Include="Assets\Scripts\RealEstate\RealEstateSetup.cs" />
      <Compile Include="Assets\Scripts\ScrollingItemMenu.cs" />
      <Compile Include="Assets\Scripts\StringFormatter.cs" />
-     <Compile Include="Assets\Scripts\ToolStore\ToolStoreInput.cs" />
-     <Compile Include="Assets\Scripts\ToolStore\ToolStoreSetup.cs" />
      <Compile Include="Assets\Scripts\TopDisplayLogic.cs" />
-     <Compile Include="Assets\Scripts\_Obsolete\AnimatedGifDrawer.cs" />
-     <Compile Include="Assets\Scripts\_Obsolete\BackgroundStretcher.cs" />
      <None Include="Assets\Plugins\Android\README.txt" />
      <None Include="Assets\Scripts\BeerGameLib\Enums\TODO.txt" />
  <Reference Include="System.Drawing">

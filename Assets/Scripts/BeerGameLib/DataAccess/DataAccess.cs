@@ -40,7 +40,7 @@ public class DataAccess : MonoBehaviour
 			items = GetItems((ItemCategory)id, out associatedSubcategories, out associatedCategories);
 			for (int i =0; i <items.Count; i++)
 			{
-				returnValue.Add(items[i], associatedSubcategories[i], associatedCategories[i],  1);
+				returnValue.Add(items[i], associatedSubcategories[i], associatedCategories[i],  9999);
 			}
 		}
 
