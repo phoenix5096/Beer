@@ -1,25 +1,26 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BrewShop\BrewShopBrowseInput.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PubLane\PubLaneSetup.cs">
     <Files>
-      <File FileName="Assets\Scripts\BrewShop\BrewShopBrowseInput.cs" Line="589" Column="57" />
-      <File FileName="Assets\Scripts\BeerGameLib\Classes\Inventory.cs" Line="87" Column="1" />
-      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="96" Column="6" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopMainInput.cs" Line="35" Column="9" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopBrowseSetup.cs" Line="11" Column="2" />
-      <File FileName="Assets\Scripts\TopDisplayLogic.cs" Line="49" Column="5" />
-      <File FileName="Assets\Scripts\RealEstate\RealEstateSetup.cs" Line="8" Column="5" />
-      <File FileName="Assets\Scripts\PubLane\PubLaneSetup.cs" Line="8" Column="5" />
-      <File FileName="Assets\Scripts\Options\OptionsSetup.cs" Line="8" Column="20" />
-      <File FileName="Assets\Scripts\MainMenuScreen\MainMenuScreenSetup.cs" Line="13" Column="5" />
-      <File FileName="Assets\Scripts\MainMenuScreen\MainMenuInput.cs" Line="17" Column="6" />
-      <File FileName="Assets\Scripts\LoadingScreen\LoadingScreenSetup.cs" Line="8" Column="5" />
-      <File FileName="Assets\Scripts\Home\HomeSetup.cs" Line="8" Column="5" />
-      <File FileName="Assets\Scripts\DialogBox.cs" Line="60" Column="4" />
-      <File FileName="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" Line="10" Column="6" />
-      <File FileName="Assets\Scripts\CityMapScreen\CityMapButtonInput.cs" Line="20" Column="6" />
-      <File FileName="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" Line="22" Column="5" />
-      <File FileName="Assets\Scripts\Carnival\CarnivalLoad.cs" Line="8" Column="5" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopBrowseInput.cs" Line="14" Column="2" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Inventory.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopMainInput.cs" Line="27" Column="25" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopBrowseSetup.cs" Line="79" Column="2" />
+      <File FileName="Assets\Scripts\TopDisplayLogic.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RealEstate\RealEstateSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PubLane\PubLaneSetup.cs" Line="8" Column="11" />
+      <File FileName="Assets\Scripts\Options\OptionsSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainMenuScreen\MainMenuScreenSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainMenuScreen\MainMenuInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LoadingScreen\LoadingScreenSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Home\HomeSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DialogBox.cs" Line="72" Column="6" />
+      <File FileName="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" Line="12" Column="3" />
+      <File FileName="Assets\Scripts\CityMapScreen\CityMapButtonInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" Line="23" Column="3" />
+      <File FileName="Assets\Scripts\Carnival\CarnivalLoad.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopScrollingMenuSetup.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -29,8 +30,11 @@
               <Node name="BeerGameLib" expanded="True">
                 <Node name="Classes" expanded="True" />
               </Node>
-              <Node name="BrewShop" expanded="True">
-                <Node name="BrewShopBrowseInput.cs" selected="True" />
+              <Node name="BrewShop" expanded="True" />
+              <Node name="CharacterSelectionScreen" expanded="True" />
+              <Node name="CityMapScreen" expanded="True" />
+              <Node name="PubLane" expanded="True">
+                <Node name="PubLaneSetup.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -42,15 +46,13 @@
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
           <Value>a</Value>
+          <Value>GameData.CharacterInventory.ItemsBySubCategory[(selectedSubCategory as Subcategory).Id]</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BrewShop\BrewShopBrowseInput.cs" line="533" />
-      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\BrewShop\BrewShopBrowseInput.cs" line="485" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" line="119" offsetX="480" offsetY="1888" expression="query" liveUpdate="False" />

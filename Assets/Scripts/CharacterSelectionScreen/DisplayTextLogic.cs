@@ -19,7 +19,7 @@ public class DisplayTextLogic : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		//TODO: EVENTS INSTEAD OF CONSTANT CHECKING
+		//TODO: use events instead of polling?
 		if (characterMenu.selectedIndex >= 0)
 		{
 			string selectedValue = characterMenu.getSelectedValue().ToString();

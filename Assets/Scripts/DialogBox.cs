@@ -57,7 +57,7 @@ public class DialogBox : MonoBehaviour
 		Action ();
 	}
 
-	//TODO: test this
+	//TODO: test this and use it to block screen inputs until this is true
 	public bool IsDone()
 	{
 		return (_currentEntry >= entrytext.Count - 1 && !_isScrolling);

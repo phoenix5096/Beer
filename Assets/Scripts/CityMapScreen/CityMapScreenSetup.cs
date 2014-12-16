@@ -7,7 +7,7 @@ public class CityMapScreenSetup : MonoBehaviour {
 	void Start () {
 		if (GameData.TutorialStep == 0) 
 		{
-			//TODO PIERRE: display first message, draw arrows, disable all irrelevant buttons, etc...
+			//TODO: display first message, draw arrows, disable all irrelevant buttons, etc...
 		}
 	}
 	
