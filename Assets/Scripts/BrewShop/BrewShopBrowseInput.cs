@@ -14,6 +14,8 @@ public class BrewShopBrowseInput : MonoBehaviour {
 
 	void OnMouseUp()
 	{
+
+
 		if (ButtonId == "Cancel") 
 		{
 			switch (setupScript.CurrentState)

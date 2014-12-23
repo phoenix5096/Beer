@@ -4,10 +4,10 @@
 /// </summary>
 public enum ItemCategory
 {
-	[Description("Adjunct")]
+	[Description("Kit")]
 	[DbTableName("tbl_FermentableIngredient")]
 	[ItemType("Ingredient")]
-	Adjunct =4,
+	Kit =4,
 
 	[Description("Base Malt")]
 	[DbTableName("tbl_FermentableIngredient")]
@@ -149,4 +149,8 @@ public enum ItemCategory
 	[ItemType("Equipment")]
 	FermenterTemperatureControl = 33,
 
+	[Description("Adjunct")]
+	[DbTableName("tbl_FermentableIngredient")]
+	[ItemType("Ingredient")]
+	Adjunct =34,
 }

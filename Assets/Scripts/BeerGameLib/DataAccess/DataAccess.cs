@@ -134,6 +134,7 @@ public class DataAccess : MonoBehaviour
 		case ItemCategory.GermanHop:
 		case ItemCategory.InternationalHop:
 			return BuildHopFromDataRow(row, out sub, out cat);
+		case ItemCategory.Kit:
 		case ItemCategory.Adjunct:
 		case ItemCategory.BaseMalt:
 		case ItemCategory.Extract:

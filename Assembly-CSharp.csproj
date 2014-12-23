@@ -1,112 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-	<ProductVersion>10.0.20506</ProductVersion>
-	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{BCBC9496-E372-F3BB-F3B7-7D09EADAE429}</ProjectGuid>
-	<OutputType>Library</OutputType>
-	<AppDesignerFolder>Properties</AppDesignerFolder>
-	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp</AssemblyName>
-	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-	<FileAlignment>512</FileAlignment>
-	<BaseDirectory>Assets</BaseDirectory>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BCBC9496-E372-F3BB-F3B7-7D09EADAE429}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-	<DebugSymbols>true</DebugSymbols>
-	<DebugType>full</DebugType>
-	<Optimize>false</Optimize>
-	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_5_4;UNITY_4_5;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
-	<ErrorReport>prompt</ErrorReport>
-	<WarningLevel>4</WarningLevel>
-	<NoWarn>0169</NoWarn>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_4_5_4;UNITY_4_5;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-	<DebugType>pdbonly</DebugType>
-	<Optimize>true</Optimize>
-	<OutputPath>Temp\bin\Release\</OutputPath>
-	<DefineConstants>TRACE</DefineConstants>
-	<ErrorReport>prompt</ErrorReport>
-	<WarningLevel>4</WarningLevel>
-	<NoWarn>0169</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-	<Reference Include="System" />
-    <Reference Include="System.XML" />
-	<Reference Include="System.Core" />
-	<Reference Include="System.Xml.Linq" />
-	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
-	</Reference>
-	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
-	</Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files %28x86%29\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:\Program Files %28x86%29\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Category.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\BaseKit.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Chiller.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Container.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Equipment.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Fermenter.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\FermenterTemperatureControl.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Filter.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Grinder.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Mashtun.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\MeasuringInstrument.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Pot.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Sanitizer.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Fermentable.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Hop.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Ingredient.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Yeast.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Inventory.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Item.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Shop.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Subcategory.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\DataTable.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Enums\EnumHelper.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Enums\ItemCategory.cs" />
-     <Compile Include="Assets\Scripts\BeerGameLib\Enums\ShopMode.cs" />
-     <Compile Include="Assets\Scripts\BrewShop\BrewShopBrowseInput.cs" />
-     <Compile Include="Assets\Scripts\BrewShop\BrewShopBrowseSetup.cs" />
-     <Compile Include="Assets\Scripts\BrewShop\BrewShopMainInput.cs" />
-     <Compile Include="Assets\Scripts\BrewShop\BrewShopScrollingMenuSetup.cs" />
-     <Compile Include="Assets\Scripts\ButtonTextHighlighting.cs" />
-     <Compile Include="Assets\Scripts\Carnival\CarnivalInput.cs" />
-     <Compile Include="Assets\Scripts\Carnival\CarnivalLoad.cs" />
-     <Compile Include="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionMenuInput.cs" />
-     <Compile Include="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionScreenSetup.cs" />
-     <Compile Include="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" />
-     <Compile Include="Assets\Scripts\CityMapScreen\CityMapButtonInput.cs" />
-     <Compile Include="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" />
-     <Compile Include="Assets\Scripts\DialogBox.cs" />
-     <Compile Include="Assets\Scripts\GameData.cs" />
-     <Compile Include="Assets\Scripts\Home\HomeInput.cs" />
-     <Compile Include="Assets\Scripts\Home\HomeSetup.cs" />
-     <Compile Include="Assets\Scripts\IntroVideoScreen\IntroVideoScreenSetup.cs" />
-     <Compile Include="Assets\Scripts\LoadingScreen\LoadingScreenSetup.cs" />
-     <Compile Include="Assets\Scripts\MainMenuScreen\MainMenuInput.cs" />
-     <Compile Include="Assets\Scripts\MainMenuScreen\MainMenuScreenSetup.cs" />
-     <Compile Include="Assets\Scripts\Options\OptionsInput.cs" />
-     <Compile Include="Assets\Scripts\Options\OptionsSetup.cs" />
-     <Compile Include="Assets\Scripts\PubLane\PubLaneInput.cs" />
-     <Compile Include="Assets\Scripts\PubLane\PubLaneSetup.cs" />
-     <Compile Include="Assets\Scripts\RealEstate\RealEstateInput.cs" />
-     <Compile Include="Assets\Scripts\RealEstate\RealEstateSetup.cs" />
-     <Compile Include="Assets\Scripts\ScrollingItemMenu.cs" />
-     <Compile Include="Assets\Scripts\StringFormatter.cs" />
-     <Compile Include="Assets\Scripts\TopDisplayLogic.cs" />
-     <None Include="Assets\Plugins\Android\README.txt" />
-     <None Include="Assets\Scripts\BeerGameLib\Enums\TODO.txt" />
- <Reference Include="System.Drawing">
- <HintPath>C:/Users/Pierre/Documents/GitHub/Beer/Assets/System.Drawing.dll</HintPath>
- </Reference>
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Category.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\BaseKit.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Chiller.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Container.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Equipment.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Fermenter.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\FermenterTemperatureControl.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Filter.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Grinder.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Mashtun.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\MeasuringInstrument.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Pot.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Sanitizer.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Fermentable.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Hop.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Ingredient.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Ingredients\Yeast.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Inventory.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Item.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Shop.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Classes\Subcategory.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\DataTable.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Enums\EnumHelper.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Enums\ItemCategory.cs" />
+    <Compile Include="Assets\Scripts\BeerGameLib\Enums\ShopMode.cs" />
+    <Compile Include="Assets\Scripts\BrewShop\BrewShopBrowseInput.cs" />
+    <Compile Include="Assets\Scripts\BrewShop\BrewShopBrowseSetup.cs" />
+    <Compile Include="Assets\Scripts\BrewShop\BrewShopMainInput.cs" />
+    <Compile Include="Assets\Scripts\BrewShop\BrewShopScrollingMenuSetup.cs" />
+    <Compile Include="Assets\Scripts\ButtonTextHighlighting.cs" />
+    <Compile Include="Assets\Scripts\Carnival\CarnivalInput.cs" />
+    <Compile Include="Assets\Scripts\Carnival\CarnivalLoad.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionMenuInput.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionScreenSetup.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" />
+    <Compile Include="Assets\Scripts\CityMapScreen\CityMapButtonInput.cs" />
+    <Compile Include="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" />
+    <Compile Include="Assets\Scripts\DialogBox.cs" />
+    <Compile Include="Assets\Scripts\GameData.cs" />
+    <Compile Include="Assets\Scripts\Home\HomeMain_Input.cs" />
+    <Compile Include="Assets\Scripts\IntroVideoScreen\IntroVideoScreenSetup.cs" />
+    <Compile Include="Assets\Scripts\LoadingScreen\LoadingScreenSetup.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScreen\MainMenuInput.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScreen\MainMenuScreenSetup.cs" />
+    <Compile Include="Assets\Scripts\Options\OptionsInput.cs" />
+    <Compile Include="Assets\Scripts\Options\OptionsSetup.cs" />
+    <Compile Include="Assets\Scripts\PubLane\PubLaneInput.cs" />
+    <Compile Include="Assets\Scripts\PubLane\PubLaneSetup.cs" />
+    <Compile Include="Assets\Scripts\RealEstate\RealEstateInput.cs" />
+    <Compile Include="Assets\Scripts\RealEstate\RealEstateSetup.cs" />
+    <Compile Include="Assets\Scripts\ScrollingItemMenu.cs" />
+    <Compile Include="Assets\Scripts\StringFormatter.cs" />
+    <Compile Include="Assets\Scripts\TopDisplayLogic.cs" />
+    <None Include="Assets\Plugins\Android\README.txt" />
+    <None Include="Assets\Scripts\BeerGameLib\Enums\TODO.txt" />
+    <Reference Include="System.Drawing">
+      <HintPath>C:\Users\Pierre\Documents\GitHub\Beer\Assets\System.Drawing.dll</HintPath>
+    </Reference>
+    <Compile Include="Assets\Scripts\Home\HomeMain_Setup.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -116,5 +115,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
 </Project>

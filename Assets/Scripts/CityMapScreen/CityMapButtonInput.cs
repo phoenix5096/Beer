@@ -13,7 +13,7 @@ public class CityMapButtonInput : MonoBehaviour {
 		}
 		else if (buttonId == "Home") 
 		{
-			Application.LoadLevel ("Home");
+			Application.LoadLevel ("Home_Main");
 		}
 		else if (buttonId == "Cafe") 
 		{

@@ -33,7 +33,7 @@ public class DialogBox : MonoBehaviour
 	private StringFormatter _sf;
 	private Vector3 _leftLabelPosition;
 	private Vector3 _rightLabelPosition;
-	private int lastSpaceIndex = -1;
+	private bool _firstInit = true;
 
 	//The UI elements
 	public GameObject iconLeft;
@@ -65,6 +65,9 @@ public class DialogBox : MonoBehaviour
 
 	public void Initialize()
 	{
+		_currentEntry = -1;
+		_isScrolling = false;
+		_currentTextToDisplay = "";
 		_entries = new Dictionary<int, Entry>();
 		
 		if (entrySprites.Count != entrytext.Count || entrySprites.Count != entryPosition.Count)
@@ -73,11 +76,14 @@ public class DialogBox : MonoBehaviour
 		}
 		else
 		{
-			_sf = lblText.GetComponent<StringFormatter> ();
-			_leftRenderer = iconLeft.GetComponent<SpriteRenderer> ();
-			_rightRenderer= iconRight.GetComponent<SpriteRenderer> ();
-			_leftLabelPosition = new Vector3(lblText.transform.position.x -0.24F, lblText.transform.position.y, 1); //TODO: calculate properly or take as a parameter...
-			_rightLabelPosition = new Vector3(lblText.transform.position.x, lblText.transform.position.y, 1);//TODO: calculate properly or take as a parameter...
+			if (_firstInit)
+			{
+				_sf = lblText.GetComponent<StringFormatter> ();
+				_leftRenderer = iconLeft.GetComponent<SpriteRenderer> ();
+				_rightRenderer= iconRight.GetComponent<SpriteRenderer> ();
+				_leftLabelPosition = new Vector3(lblText.transform.position.x -0.24F, lblText.transform.position.y, 1); //TODO: calculate properly or take as a parameter...
+				_rightLabelPosition = new Vector3(lblText.transform.position.x, lblText.transform.position.y, 1);//TODO: calculate properly or take as a parameter...
+			}
 
 			for (int i =0; i < entrySprites.Count; i++)
 			{
@@ -88,6 +94,8 @@ public class DialogBox : MonoBehaviour
 			Action();
 			StartCoroutine("ScrollText");
 		}
+
+		_firstInit = false;
 	}
 
 	public void Action()
@@ -179,7 +187,6 @@ public class DialogBox : MonoBehaviour
 						blinkingArrow.GetComponent<Animator>().Play("BlinkingDialogBoxArrow");
 					}
 					_isScrolling = false;
-					lastSpaceIndex = -1;
 				}
 			}
 

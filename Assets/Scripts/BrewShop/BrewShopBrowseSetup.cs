@@ -197,6 +197,13 @@ public class BrewShopBrowseSetup : MonoBehaviour
 			categoryLabel.text = (selectedCategory as Category).Name;
 			subcategoryLabel.text = (selectedSubCategory as Subcategory).Name;
 			itemLabel.text = (selectedItem as Item).Name;
+
+			if (CurrentMode == ShopMode.Sell &&
+			    InventoryData.ItemQuantities.ContainsKey ((selectedItem as Item).Id))
+			{
+				itemLabel.text += " (You currently have " + InventoryData.ItemQuantities[(selectedItem as Item).Id] + ")";
+			}
+
 			costLabel.text = (selectedItem as Item).Cost.ToString("0.00 $");
 			
 			if ((selectedItem as Item).Description != string.Empty && (selectedItem as Item).Description != null)
@@ -221,7 +228,6 @@ public class BrewShopBrowseSetup : MonoBehaviour
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
-	//TODO: check if we have enough,  and display a warning instead if we do not have enough cash... disable the "Buy"/"Sell" buttons... hide after .5 seconds (like Thank you screen)
 	public void BuyCurrentItem()
 	{
 		if (selectedCategory != null && selectedSubCategory != null && selectedItem != null) 
@@ -229,6 +235,7 @@ public class BrewShopBrowseSetup : MonoBehaviour
 			float totalCost = (float)((selectedItem as Item).Cost * selectedQuantity);
 			GameData.CharacterInventory.Add(selectedItem as Item,selectedSubCategory as Subcategory ,selectedCategory as Category, selectedQuantity);
 			GameData.Money -= totalCost;
+			GameObject.Find("TopDisplay").GetComponent<TopDisplayLogic>().RefreshAll();
 			DisplayThankYou("DisplayBrowsing");
 		}
 		
@@ -243,7 +250,8 @@ public class BrewShopBrowseSetup : MonoBehaviour
 			//TODO: centralize math for item's sell value
 			float totalCost = (float)((selectedItem as Item).Cost * selectedQuantity);
 			GameData.Money +=totalCost/2;
-			
+			GameObject.Find("TopDisplay").GetComponent<TopDisplayLogic>().RefreshAll();
+
 			if (GameData.CharacterInventory.ItemQuantities.Count == 0)
 			{
 				//our inventory is empty
@@ -338,13 +346,20 @@ public class BrewShopBrowseSetup : MonoBehaviour
 	
 	public void DisplayBuyConfirmation()
 	{
-		//set the current state
-		CurrentState = BrewShopBrowseSetup.ShopState.TransationConfirmation;
-
-		//show the message box
 		float totalCost = (float)((selectedItem as Item).Cost * selectedQuantity);
-		string text = "Purchase " + selectedQuantity + " [OZ\\LBS\\KG] of " + (selectedItem as Item).Name + " for " + totalCost.ToString("0.00 $") + "?\n\nYou will have " + (GameData.Money-totalCost).ToString("0.00 $") + " left after this purchase.";	
-		ShowMessageBox (text, true, true, true, true, false, 0 ,"");
+
+		if (totalCost > GameData.Money)
+		{
+			CurrentState = ShopState.NotEnoughMoney;
+			string text = "You do not have enough funds...";
+			ShowMessageBox (text, false, false, true, true, false, 0 ,"");
+		}
+		else
+		{
+			CurrentState = BrewShopBrowseSetup.ShopState.TransationConfirmation;
+			string text = "Purchase " + selectedQuantity + " [OZ\\LBS\\KG] of " + (selectedItem as Item).Name + " for " + totalCost.ToString("0.00 $") + "?";	
+			ShowMessageBox (text, true, true, true, true, false, 0 ,"");
+		}
 	}
 
 	//TODO: centralize math for item's sell value
