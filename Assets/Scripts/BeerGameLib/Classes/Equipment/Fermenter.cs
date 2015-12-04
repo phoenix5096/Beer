@@ -23,6 +23,9 @@ public class Fermenter : Equipment
 	///The factor at which the attribute is applied to the beer (ex: 1/month)
 	public int AttributeValue { get; set; }
 
+	//The wort in the fermenter
+	public Wort CurrentWortInFermenter { get; set; }
+
 	public Fermenter()
 	{
 	}
@@ -37,6 +40,6 @@ public class Fermenter : Equipment
 		this.Id = e.Id;
 		this.Name = e.Name;
 		this.SpriteLocation = e.SpriteLocation;
-		this.SubcategoryId = e.SubcategoryId;
+		this.Subcategory = e.Subcategory;
 	}
 }

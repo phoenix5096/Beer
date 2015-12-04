@@ -28,7 +28,7 @@ public class ScrollingItemMenu : MonoBehaviour
 
 	public System.Object getSelectedValue()
 	{
-		if (values.Count >0)
+		if (values !=null && values.Count >0)
 		{
 			return values [selectedIndex];
 		}
@@ -43,7 +43,6 @@ public class ScrollingItemMenu : MonoBehaviour
 		return ScrollingRight || ScrollingLeft;
 	}
 
-	// Use this for initialization
 	void Start () 
 	{
 		//store all required information about the menu slots

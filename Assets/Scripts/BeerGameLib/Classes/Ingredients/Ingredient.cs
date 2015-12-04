@@ -18,7 +18,7 @@ public class Ingredient : Item
 		this.Id = i.Id;
 		this.Name = i.Name;
 		this.SpriteLocation = i.SpriteLocation;
-		this.SubcategoryId = i.SubcategoryId;
+		this.Subcategory = i.Subcategory;
 	}
 }
 

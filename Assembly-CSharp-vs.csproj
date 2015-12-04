@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Brewing\CellarSlot.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Classes\Brewing\Wort.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Classes\Category.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\BaseKit.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Classes\Equipment\Chiller.cs" />
@@ -70,7 +72,9 @@
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\DataTable.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Enums\CellarMode.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Enums\EnumHelper.cs" />
+     <Compile Include="Assets\Scripts\BeerGameLib\Enums\FermentationStage.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Enums\ItemCategory.cs" />
      <Compile Include="Assets\Scripts\BeerGameLib\Enums\ShopMode.cs" />
      <Compile Include="Assets\Scripts\BrewShop\BrewShopBrowseInput.cs" />
@@ -87,8 +91,19 @@
      <Compile Include="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" />
      <Compile Include="Assets\Scripts\DialogBox.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />
+     <Compile Include="Assets\Scripts\Home\HomeBrewBoilIngredientSelection_Input.cs" />
+     <Compile Include="Assets\Scripts\Home\HomeBrewBoilIngredientSelection_Setup.cs" />
+     <Compile Include="Assets\Scripts\Home\HomeBrewKitEquipmentSelection_Input.cs" />
+     <Compile Include="Assets\Scripts\Home\HomeBrewKitEquipmentSelection_Setup.cs" />
+     <Compile Include="Assets\Scripts\Home\HomeBrewingTypeSelection_Input.cs" />
+     <Compile Include="Assets\Scripts\Home\HomeBrewingTypeSelection_Setup.cs" />
+     <Compile Include="Assets\Scripts\Home\HomeCellar_Input.cs" />
+     <Compile Include="Assets\Scripts\Home\HomeCellar_Setup.cs" />
+     <Compile Include="Assets\Scripts\Home\HomeInventory_Input.cs" />
+     <Compile Include="Assets\Scripts\Home\HomeInventory_Setup.cs" />
      <Compile Include="Assets\Scripts\Home\HomeMain_Input.cs" />
      <Compile Include="Assets\Scripts\Home\HomeMain_Setup.cs" />
+     <Compile Include="Assets\Scripts\Home\HomeScrollingMenuSetup.cs" />
      <Compile Include="Assets\Scripts\IntroVideoScreen\IntroVideoScreenSetup.cs" />
      <Compile Include="Assets\Scripts\LoadingScreen\LoadingScreenSetup.cs" />
      <Compile Include="Assets\Scripts\MainMenuScreen\MainMenuInput.cs" />

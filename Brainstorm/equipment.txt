@@ -1,0 +1,45 @@
+SUMMARY MATRIX:
+			Pot	Mashtun		Grinder		Fermenter	Sealer		Container	Filter		Chiller	Tank		MeasurementTools
+	BatchSize:	X	(Indirect)				X 				
+	Conversion:		X		X													(Indirect)
+	Attenuation:						X								X
+	Freshness:								X 		(later)	
+	Clarity:													X		X	X
+	Infection:							X				(later)		X		X	X
+
+			used 	same		one		same as		one 		determines		1 bonus		2	1		can indirectly	
+			to 	as		bonus,		pot but		passive		who will		and 1		bonus!	bonus		help with
+			brew 	pots		no penalty!	1 bonus		bonus		buy it?		penalty		1	1		better measurements
+			bigger 					and 1		no						penalty	penaly		
+			batches					penalty		penalty							but has
+			no														attributes!
+			real
+			bonus
+			or
+			penalty	
+
+//TODO: build home main screen
+//TODO: build inventory screen (for home)
+//RESULT: inventory is browsable
+
+
+//NEXT: revamp brewing engine, then build UI
+
+//AFTER: build selling mechanism
+
+
+Misc??:
+	-IngredientSealers (freshness)
+	-AC (better temp control)
+	-Generator (mitigate powerloss)
+	-Water System (???)
+	-Kettle loss?
+	-Distiller
+	-Starter Kit?
+	-containers with freshness factor?
+
+
+//LATER: add 3D text capabilities to the scrolling menu
+//LATER: make scrolling menu text display current inventory quantity
+//LATER: fix "jitter" in scrolling list control when fps not 25
+//LATER: research GUIText vs 3D text?

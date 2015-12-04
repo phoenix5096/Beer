@@ -37,6 +37,6 @@ public class MeasuringInstrument : Equipment
 		this.Id = e.Id;
 		this.Name = e.Name;
 		this.SpriteLocation = e.SpriteLocation;
-		this.SubcategoryId = e.SubcategoryId;
+		this.Subcategory = e.Subcategory;
 	}
 }

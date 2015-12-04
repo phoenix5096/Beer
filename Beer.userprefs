@@ -1,22 +1,23 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Home\HomeMain_Input.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Home\HomeBrewBoilIngredientSelection_Setup.cs">
     <Files>
-      <File FileName="Assets\Scripts\BrewShop\BrewShopBrowseInput.cs" Line="34" Column="12" />
+      <File FileName="Assets\Scripts\Home\HomeCellar_Setup.cs" Line="451" Column="3" />
+      <File FileName="Assets\Scripts\Home\HomeInventory_Input.cs" Line="49" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\Classes\Inventory.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="28" Column="1" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopMainInput.cs" Line="104" Column="3" />
-      <File FileName="Assets\Scripts\BrewShop\BrewShopBrowseSetup.cs" Line="204" Column="25" />
-      <File FileName="Assets\Scripts\TopDisplayLogic.cs" Line="5" Column="29" />
+      <File FileName="Assets\Scripts\ScrollingItemMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopMainInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopBrowseSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TopDisplayLogic.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\RealEstate\RealEstateSetup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PubLane\PubLaneSetup.cs" Line="8" Column="11" />
+      <File FileName="Assets\Scripts\PubLane\PubLaneSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Options\OptionsSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenuScreen\MainMenuScreenSetup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenuScreen\MainMenuInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\LoadingScreen\LoadingScreenSetup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DialogBox.cs" Line="83" Column="63" />
-      <File FileName="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" Line="12" Column="3" />
-      <File FileName="Assets\Scripts\CityMapScreen\CityMapButtonInput.cs" Line="16" Column="37" />
+      <File FileName="Assets\Scripts\DialogBox.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CityMapScreen\CityMapScreenSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CityMapScreen\CityMapButtonInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CharacterSelectionScreen\DisplayTextLogic.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Carnival\CarnivalLoad.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BrewShop\BrewShopScrollingMenuSetup.cs" Line="1" Column="1" />
@@ -24,18 +25,47 @@
       <File FileName="Assets\Scripts\BeerGameLib\Enums\ItemCategory.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BeerGameLib\Enums\EnumHelper.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GameData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Home\HomeMain_Input.cs" Line="80" Column="17" />
-      <File FileName="Assets\Scripts\Home\HomeMain_Setup.cs" Line="18" Column="3" />
+      <File FileName="Assets\Scripts\Home\HomeMain_Input.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Home\HomeMain_Setup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Home\HomeInventory_Setup.cs" Line="16" Column="41" />
+      <File FileName="Assets\Scripts\Home\HomeScrollingMenuSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\StringFormatter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CharacterSelectionScreen\CharacterSelectionScreenSetup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BrewShop\BrewShopBrowseInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Home\HomeCellar_Input.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Category.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Brewing\Wort.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Brewing\CellarSlot.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Enums\FermentationStage.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Subcategory.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Item.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Fermenter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Equipment.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Shop.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Enums\CellarMode.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Enums\TODO.txt" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\DataAccess\SqliteDatabase.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Options\OptionsInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Home\HomeBrewingTypeSelection_Setup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Home\HomeBrewingTypeSelection_Input.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Container.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\MeasuringInstrument.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\Sanitizer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Home\HomeBrewKitEquipmentSelection_Input.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Home\HomeBrewKitEquipmentSelection_Setup.cs" Line="61" Column="24" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\FermenterTemperatureControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\DataAccess\DataAccess.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BeerGameLib\Classes\Equipment\BaseKit.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Home\HomeBrewBoilIngredientSelection_Input.cs" Line="25" Column="29" />
+      <File FileName="Assets\Scripts\Home\HomeBrewBoilIngredientSelection_Setup.cs" Line="203" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="BrewShop" expanded="True" />
-              <Node name="CityMapScreen" expanded="True" />
               <Node name="Home" expanded="True">
-                <Node name="HomeMain_Input.cs" selected="True" />
+                <Node name="HomeBrewBoilIngredientSelection_Setup.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -46,15 +76,18 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>a</Value>
-          <Value>GameData.CharacterInventory.ItemsBySubCategory[(selectedSubCategory as Subcategory).Id]</Value>
+          <Value>itemClicked.Name</Value>
+          <Value>CellarSlotScrollingList.selectedIndex+1</Value>
+          <Value>slotDisplayed</Value>
+          <Value>GameData.TestingInventory'</Value>
+          <Value>GameObject.Find ("btnOk")</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\Home\HomeMain_Input.cs" line="83" />
+      <Breakpoint file="C:\Users\Pierre\Documents\GitHub\Beer\Assets\Scripts\GameData.cs" line="43" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>

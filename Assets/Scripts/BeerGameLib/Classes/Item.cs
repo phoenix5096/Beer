@@ -11,7 +11,9 @@ public class Item
 	public int Id { get; set; }
 	public string Name {get; set;}
 	public string Description {get; set;}
-	public int SubcategoryId { get; set; }
+	//todo pierre: testing
+	//public int SubcategoryId { get; set; }
+	public Subcategory Subcategory { get; set; }
 	public double Cost { get; set; }
 	public int CharacterLevelRequired { get; set; }
 	public Sprite ItemSprite { get; set;}

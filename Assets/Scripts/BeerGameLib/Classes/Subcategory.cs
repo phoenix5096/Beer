@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Subcategory : Category
 {
-	public int ParentCategoryId;
+	public Category ParentCategory;
 }
 
 

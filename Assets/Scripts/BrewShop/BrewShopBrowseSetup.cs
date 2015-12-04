@@ -233,7 +233,7 @@ public class BrewShopBrowseSetup : MonoBehaviour
 		if (selectedCategory != null && selectedSubCategory != null && selectedItem != null) 
 		{
 			float totalCost = (float)((selectedItem as Item).Cost * selectedQuantity);
-			GameData.CharacterInventory.Add(selectedItem as Item,selectedSubCategory as Subcategory ,selectedCategory as Category, selectedQuantity);
+			GameData.CharacterInventory.Add(selectedItem as Item, selectedQuantity);
 			GameData.Money -= totalCost;
 			GameObject.Find("TopDisplay").GetComponent<TopDisplayLogic>().RefreshAll();
 			DisplayThankYou("DisplayBrowsing");
@@ -245,7 +245,7 @@ public class BrewShopBrowseSetup : MonoBehaviour
 	{
 		if (selectedCategory != null && selectedSubCategory != null && selectedItem != null) 
 		{
-			GameData.CharacterInventory.Remove(selectedItem as Item, selectedSubCategory as Subcategory, selectedCategory as Category,selectedQuantity);
+			GameData.CharacterInventory.Remove(selectedItem as Item, selectedQuantity);
 			
 			//TODO: centralize math for item's sell value
 			float totalCost = (float)((selectedItem as Item).Cost * selectedQuantity);

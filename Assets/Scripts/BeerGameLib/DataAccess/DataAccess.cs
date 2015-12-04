@@ -33,21 +33,19 @@ public class DataAccess : MonoBehaviour
 		List<int> SubCategorieIds = DataAccess.GetSubCategoriesIdsForStore(shopName);
 		foreach(int id in SubCategorieIds)
 		{
-			List<Subcategory> associatedSubcategories;
-			List<Category> associatedCategories;
 			List<Item> items;
 
-			items = GetItems((ItemCategory)id, out associatedSubcategories, out associatedCategories);
+			items = GetItems((ItemCategory)id);
 			for (int i =0; i <items.Count; i++)
 			{
-				returnValue.Add(items[i], associatedSubcategories[i], associatedCategories[i],  9999);
+				returnValue.Add(items[i],  99);
 			}
 		}
 
 		return returnValue;
 	}
 	
-	private static List<Item>  GetItems(ItemCategory category, out List<Subcategory> associatedSubcategories, out List<Category> associatedCategories)
+	private static List<Item>  GetItems(ItemCategory category)
 	{
 		string query = string.Empty;
 		string tableName = EnumHelper.GetDbTableName (category);
@@ -100,27 +98,16 @@ public class DataAccess : MonoBehaviour
 		DataTable table = sqlDB.ExecuteQuery (query);
 		
 		List<Item> returnValue = new List<Item> ();
-		associatedSubcategories = new List<Subcategory> ();
-		associatedCategories = new List<Category> ();
 		foreach(DataRow row in table.Rows)
 		{
-			Subcategory sub = null;
-			Category cat = null;
-			Item it = BuildItemFromRow(category, row, out sub, out cat);
+			Item it = BuildItemFromRow(category, row);
 			returnValue.Add (it);
-			associatedSubcategories.Add(sub);
-			associatedCategories.Add (cat);
-
 		}
 		return returnValue;
 	}
 	
-	private static Item BuildItemFromRow(ItemCategory category, DataRow row, out Subcategory sub, out Category cat)
+	private static Item BuildItemFromRow(ItemCategory category, DataRow row)
 	{
-		Item returnValue = null;
-		sub = null;
-		cat = null;
-
 		switch (category)
 		{
 		case ItemCategory.AleYeast:
@@ -128,12 +115,12 @@ public class DataAccess : MonoBehaviour
 		case ItemCategory.SpecialYeast:
 		case ItemCategory.TrappistYeast:
 		case ItemCategory.WheatYeast:
-			return BuildYeastFromDataRow(row, out sub, out cat);
+			return BuildYeastFromDataRow(row);
 		case ItemCategory.AmericanHop:
 		case ItemCategory.BritishHop:
 		case ItemCategory.GermanHop:
 		case ItemCategory.InternationalHop:
-			return BuildHopFromDataRow(row, out sub, out cat);
+			return BuildHopFromDataRow(row);
 		case ItemCategory.Kit:
 		case ItemCategory.Adjunct:
 		case ItemCategory.BaseMalt:
@@ -141,34 +128,34 @@ public class DataAccess : MonoBehaviour
 		case ItemCategory.FruitVegetable:
 		case ItemCategory.SpecialtyMalt:
 		case ItemCategory.Sugar:
-			return BuildFermentableFromDataRow(row, out sub, out cat);
+			return BuildFermentableFromDataRow(row);
 		case ItemCategory.Spice:
 		case ItemCategory.Finning:
-			return BuildChemicalFromDataRow(row, out sub, out cat);
+			return BuildChemicalFromDataRow(row);
 		case ItemCategory.BaseKit:
-			return BuildBaseKitFromDataRow(row, out sub, out cat);
+			return BuildBaseKitFromDataRow(row);
 		case ItemCategory.BottlingEquipment:
-			return BuildBottlingEquipmentFromDataRow(row, out sub, out cat);
+			return BuildBottlingEquipmentFromDataRow(row);
 		case ItemCategory.Chiller:
-			return BuildChillerFromDataRow(row, out sub, out cat);
+			return BuildChillerFromDataRow(row);
 		case ItemCategory.Container:
-			return BuildContainerFromDataRow(row, out sub, out cat);
+			return BuildContainerFromDataRow(row);
 		case ItemCategory.Fermenter:
-			return BuildFermenterFromDataRow(row, out sub, out cat);
+			return BuildFermenterFromDataRow(row);
 		case ItemCategory.FermenterTemperatureControl:
-			return BuildFermenterTemperatureControlFromDataRow(row, out sub, out cat);
+			return BuildFermenterTemperatureControlFromDataRow(row);
 		case ItemCategory.Filter:
-			return BuildFilterFromDataRow(row, out sub, out cat);
+			return BuildFilterFromDataRow(row);
 		case ItemCategory.Grinder:
-			return BuildGrinderFromDataRow(row, out sub, out cat);
+			return BuildGrinderFromDataRow(row);
 		case ItemCategory.Mashtun:
-			return BuildMashtunFromDataRow(row, out sub, out cat);
+			return BuildMashtunFromDataRow(row);
 		case ItemCategory.MeasuringInstrument:
-			return BuildMeasuringInstrumentFromDataRow(row, out sub, out cat);
+			return BuildMeasuringInstrumentFromDataRow(row);
 		case ItemCategory.Pot:
-			return BuildPotFromDataRow(row, out sub, out cat);
+			return BuildPotFromDataRow(row);
 		case ItemCategory.Sanitizer:
-			return BuildSanitizerFromDataRow(row, out sub, out cat);
+			return BuildSanitizerFromDataRow(row);
 		default:
 			return null;
 		}
@@ -189,7 +176,7 @@ public class DataAccess : MonoBehaviour
 	/// -CategoryName
 	/// -CategorySpritePath
 	/// </summary>
-	private static Item BuildBaseItemFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Item BuildBaseItemFromDataRow(DataRow row)
 	{
 		Item it = new Item ();
 		it.Id = (int)row["PKey"];
@@ -202,19 +189,19 @@ public class DataAccess : MonoBehaviour
 		it.CharacterLevelRequired = (int)row["CharacterLevelRequired"];
 		it.Cost = (double)row["Cost"];
 		it.SpriteLocation = row["SpritePath"].ToString();
-		it.SubcategoryId = (int)row["SubCategoryId"];
-
-		sub = new Subcategory ();
+	
+		Subcategory sub = new Subcategory ();
 		sub.Id = (int)row["SubCategoryId"];
 		sub.Name = row["SubCategoryName"].ToString();
 		sub.SpriteLocation = row["SubCategorySpritePath"].ToString();
-		sub.ParentCategoryId = (int)row["CategoryId"];
 
-		cat = new Category();
+		Category cat = new Category();
 		cat.Id = (int)row["CategoryId"];
 		cat.Name = row["CategoryName"].ToString();
 		cat.SpriteLocation = row["CategorySpritePath"].ToString();
 
+		sub.ParentCategory = cat;
+		it.Subcategory = sub;
 		return it;
 	}
 
@@ -223,9 +210,9 @@ public class DataAccess : MonoBehaviour
 	/// -KitchenLevelRequired
 	/// -CellarLevelRequired
 	/// </summary>
-	private static Equipment BuildBaseEquipmentFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Equipment BuildBaseEquipmentFromDataRow(DataRow row)
 	{
-		Equipment eq = new Equipment (BuildBaseItemFromDataRow (row, out sub, out cat));
+		Equipment eq = new Equipment (BuildBaseItemFromDataRow (row));
 		eq.CellarLevelRequired = (int)row["CellarLevelRequired"];
 		eq.KitchenLevelRequired = (int)row["KitchenLevelRequired"];
 		return eq;
@@ -240,9 +227,9 @@ public class DataAccess : MonoBehaviour
 	/// -Attribute2Ppg
 	/// -Attribute3Ppg
 	/// </summary>
-	private static Ingredient BuildBaseIngredientFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Ingredient BuildBaseIngredientFromDataRow(DataRow row)
 	{
-		Ingredient ing = new Ingredient(BuildBaseItemFromDataRow (row, out sub, out cat));
+		Ingredient ing = new Ingredient(BuildBaseItemFromDataRow (row));
 
 		string attribute1 = string.Empty;
 		string attribute2 = string.Empty;
@@ -300,26 +287,26 @@ public class DataAccess : MonoBehaviour
 		return ing;
 	}
 
-	private static Fermentable BuildFermentableFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Fermentable BuildFermentableFromDataRow(DataRow row)
 	{
-		Fermentable val = new Fermentable(BuildBaseIngredientFromDataRow (row, out sub, out cat));
+		Fermentable val = new Fermentable(BuildBaseIngredientFromDataRow (row));
 		val.ColorLovibond = (int)row["Lovibond"];
 		val.Ppg = (int)row["Ppg"];
 		val.FermentablePct = (int)row["FermentablePct"];
 		return val;
 	}
 
-	private static Hop BuildHopFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Hop BuildHopFromDataRow(DataRow row)
 	{
-		Hop val = new Hop(BuildBaseIngredientFromDataRow (row, out sub, out cat));
+		Hop val = new Hop(BuildBaseIngredientFromDataRow (row));
 		val.MinAlphaAcid = (double)row["MinAlpha"];
 		val.MaxAlphaAcid= (double)row["MaxAlpha"];
 		return val;
 	}
 
-	private static Yeast BuildYeastFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Yeast BuildYeastFromDataRow(DataRow row)
 	{
-		Yeast val = new Yeast(BuildBaseIngredientFromDataRow (row, out sub, out cat));
+		Yeast val = new Yeast(BuildBaseIngredientFromDataRow (row));
 		val.Attenuation = (int)row["Attenuation"];
 		val.MaxTemp= (int)row["MaxFermentationTemp"];
 		val.MinTemp= (int)row["MinFermentationTemp"];
@@ -327,47 +314,47 @@ public class DataAccess : MonoBehaviour
 		return val;
 	}
 
-	private static Ingredient BuildChemicalFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Ingredient BuildChemicalFromDataRow(DataRow row)
 	{
-		Ingredient val = BuildBaseIngredientFromDataRow (row, out sub, out cat);
+		Ingredient val = BuildBaseIngredientFromDataRow (row);
 		//Nothing else to load...
 		return val;
 	}
 
-	private static BaseKit BuildBaseKitFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static BaseKit BuildBaseKitFromDataRow(DataRow row)
 	{
-		BaseKit val = new BaseKit(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		BaseKit val = new BaseKit(BuildBaseEquipmentFromDataRow (row));
 		val.InfectionFactor = (int)row["InfectionFactor"];
 		return val;
 	}
 
-	private static Equipment BuildBottlingEquipmentFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Equipment BuildBottlingEquipmentFromDataRow(DataRow row)
 	{
-		Equipment val = BuildBaseEquipmentFromDataRow (row, out sub, out cat);
+		Equipment val = BuildBaseEquipmentFromDataRow (row);
 		//Nothing else to load
 		return val;
 	}
 	
-	private static Chiller BuildChillerFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Chiller BuildChillerFromDataRow(DataRow row)
 	{
-		Chiller val = new Chiller(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		Chiller val = new Chiller(BuildBaseEquipmentFromDataRow (row));
 		val.ClarityFactor = (int)row["ClarityFactor"];
 		val.AttenuationFactor = (int)row["AttenuationFactor"];
 		val.InfectionFactor = (int)row["InfectionFactor"];
 		return val;
 	}
 
-	private static Container BuildContainerFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Container BuildContainerFromDataRow(DataRow row)
 	{
-		Container val = new Container(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		Container val = new Container(BuildBaseEquipmentFromDataRow (row));
 		val.RequiredEquipmentId = (int)row["RequiredEquipmentId"];
 		val.Volume = (double)row["Volume"];
 		return val;
 	}
 
-	private static Fermenter BuildFermenterFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Fermenter BuildFermenterFromDataRow(DataRow row)
 	{
-		Fermenter val = new Fermenter(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		Fermenter val = new Fermenter(BuildBaseEquipmentFromDataRow (row));
 		val.Volume = (int)row["Volume"];
 		val.AttenuationFactor = (int)row["AttenuationFactor"];
 		val.ClarityFactor = (int)row["ClarityFactor"];
@@ -386,40 +373,40 @@ public class DataAccess : MonoBehaviour
 		return val;
 	}
 
-	private static FermenterTemperatureControl BuildFermenterTemperatureControlFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static FermenterTemperatureControl BuildFermenterTemperatureControlFromDataRow(DataRow row)
 	{
-		FermenterTemperatureControl val = new FermenterTemperatureControl(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		FermenterTemperatureControl val = new FermenterTemperatureControl(BuildBaseEquipmentFromDataRow (row));
 		val.Volume = (int)row["Volume"];
 		val.TemperatureFactor = (int)row["TemperatureFactor"];
 		return val;
 	}
 
-	private static Filter BuildFilterFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Filter BuildFilterFromDataRow(DataRow row)
 	{
-		Filter val = new Filter(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		Filter val = new Filter(BuildBaseEquipmentFromDataRow (row));
 		val.ClarityFactor = (int)row["ClarityFactor"];
 		val.InfectionFactor = (int)row["InfectionFactor"];
 		return val;
 	}
 
-	private static Grinder BuildGrinderFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Grinder BuildGrinderFromDataRow(DataRow row)
 	{
-		Grinder val = new Grinder(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		Grinder val = new Grinder(BuildBaseEquipmentFromDataRow (row));
 		val.ConversionFactor = (int)row["ConversionFactor"];
 		return val;
 	}
 
-	private static Mashtun BuildMashtunFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Mashtun BuildMashtunFromDataRow(DataRow row)
 	{
-		Mashtun val = new Mashtun(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		Mashtun val = new Mashtun(BuildBaseEquipmentFromDataRow (row));
 		val.MaxGrain = (int)row["MaxGrain"];
 		val.ConversionFactor = (int)row["ConversionFactor"];
 		return val;
 	}
 
-	private static MeasuringInstrument BuildMeasuringInstrumentFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static MeasuringInstrument BuildMeasuringInstrumentFromDataRow(DataRow row)
 	{
-		MeasuringInstrument val = new MeasuringInstrument(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		MeasuringInstrument val = new MeasuringInstrument(BuildBaseEquipmentFromDataRow (row));
 		val.WeightPrecision = (int)row["WeightPrecision"];
 		val.TemperaturePrecision = (int)row["TemperaturePrecision"];
 		val.IbuPrecision = (int)row["IbuPrecision"];
@@ -429,16 +416,16 @@ public class DataAccess : MonoBehaviour
 		return val;
 	}
 
-	private static Pot BuildPotFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Pot BuildPotFromDataRow(DataRow row)
 	{
-		Pot val = new Pot(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		Pot val = new Pot(BuildBaseEquipmentFromDataRow (row));
 		val.Volume = (int)row["Volume"];
 		return val;
 	}
 
-	private static Sanitizer BuildSanitizerFromDataRow(DataRow row, out Subcategory sub, out Category cat)
+	private static Sanitizer BuildSanitizerFromDataRow(DataRow row)
 	{
-		Sanitizer val = new Sanitizer(BuildBaseEquipmentFromDataRow (row, out sub, out cat));
+		Sanitizer val = new Sanitizer(BuildBaseEquipmentFromDataRow (row));
 		val.InfectionReduction = (int)row["InfectionReduction"];
 		return val;
 	}

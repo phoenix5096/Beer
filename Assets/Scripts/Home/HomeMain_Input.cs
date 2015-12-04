@@ -30,23 +30,27 @@ public class HomeMain_Input : MonoBehaviour {
 			{
 				if (theMenu.getSelectedValue().ToString() == "Brew")
 				{
-					//TODO: implement
-					MakeDialogBoxText(new List<string>(){"Not implemented..."});
+					MakeDialogBoxText(new List<string>(){"Let's Brew!"},"Home_BrewingTypeSelection");
 				}
 				else if (theMenu.getSelectedValue().ToString() == "Room")
 				{
 					//TODO: implement
-					MakeDialogBoxText(new List<string>(){"Not implemented..."});
+					MakeDialogBoxText(new List<string>(){"Not implemented..."},"");
 				}
 				else if (theMenu.getSelectedValue().ToString() == "Inventory")
-				{	
-					//TODO: implement
-					MakeDialogBoxText(new List<string>(){"Not implemented..."});
+				{
+					if (GameData.CharacterInventory.MainCategories.Count <= 0)
+					{
+						MakeDialogBoxText(new List<string>(){"I don't have anything."},"");
+					}
+					else
+					{
+						MakeDialogBoxText(new List<string>(){"Let's see what I have in storage."}, "Home_Inventory");
+					}
 				}
 				else if (theMenu.getSelectedValue().ToString() == "Cellar")
 				{	
-					//TODO: implement
-					MakeDialogBoxText(new List<string>(){"Not implemented..."});
+					Application.LoadLevel ("Home_Cellar");
 				}
 				else if (theMenu.getSelectedValue().ToString() == "Exit")
 				{
@@ -76,9 +80,9 @@ public class HomeMain_Input : MonoBehaviour {
 		theMenu.ScrollLeft();
 	}
 
-	//Todo: hard coded icon....
-	//tofo: broken?
-	public void MakeDialogBoxText(List<string> text)
+	//TODO: hard coded icon....
+	//TODO: use events to know when the text is done
+	public void MakeDialogBoxText(List<string> text, string ScreenToLoadAfterMessage)
 	{
 		DialogBox dialog = GameObject.Find ("DialogWindow").GetComponent<DialogBox>();
 		string spriteLocation = "Assets/Graphics/Characters/Jock_M_small.png";
@@ -93,6 +97,7 @@ public class HomeMain_Input : MonoBehaviour {
 			dialog.entrySprites.Add (spr);
 		}
 		dialog.entrytext = text;
+		dialog.ScreenToLoadWhenDone = ScreenToLoadAfterMessage;
 		dialog.Initialize();
 	}
 }

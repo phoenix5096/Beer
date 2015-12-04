@@ -40,6 +40,7 @@ public class DialogBox : MonoBehaviour
 	public GameObject iconRight;
 	public GUIText lblText;
 	public GameObject blinkingArrow;
+	public string ScreenToLoadWhenDone = "";
 
 	//The values
 	public List<Sprite> entrySprites;
@@ -190,10 +191,16 @@ public class DialogBox : MonoBehaviour
 				}
 			}
 
-			yield return new WaitForSeconds(delay);
-		}
+			if (ScreenToLoadWhenDone != "" && !_isScrolling && _currentEntry >= _entries.Count-1)
+			{
+				yield return new WaitForSeconds(delay*5);
+				Application.LoadLevel (ScreenToLoadWhenDone);
+			}
 
-		
+			yield return new WaitForSeconds(delay);
+
+		}
+			
 	}
 
 

@@ -44,8 +44,11 @@ public class Inventory
 	public readonly Dictionary <int,int> ItemQuantities = new Dictionary <int,int>();
 
 	
-	public bool Add(Item i, Subcategory s, Category c, int amount)
+	public bool Add(Item i, int amount)
 	{
+		Subcategory s = i.Subcategory;
+		Category c = s.ParentCategory;
+
 		if (!MainCategories.Keys.Contains(c.Id))
 		{
 			MainCategories.Add(c.Id, c);
@@ -82,8 +85,11 @@ public class Inventory
 	}
 
 	//if removing more than we have,  simply go back to 0;
-	public bool Remove(Item i, Subcategory s, Category c, int amount)
+	public bool Remove(Item i, int amount)
 	{
+		Subcategory s = i.Subcategory;
+		Category c = s.ParentCategory;
+
 		if (ItemQuantities.Keys.Contains(i.Id) && ItemQuantities[i.Id] >= amount)
 		{
 			// adjust the amount
@@ -121,6 +127,4 @@ public class Inventory
 
 		return false;
 	}
-
-
 }

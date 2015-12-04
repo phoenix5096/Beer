@@ -4,7 +4,7 @@ Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
     Renderer: NVIDIA GeForce GTX 560 Ti (ID=0x1082)
     Vendor:   NVIDIA
-    VRAM:     1232 MB
+    VRAM:     1228 MB
 Begin MonoManager ReloadAssembly
 Platform assembly: C:\Users\Pierre\Documents\GitHub\Beer\program_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading C:\Users\Pierre\Documents\GitHub\Beer\program_Data\Managed\UnityEngine.dll into Unity Child Domain
@@ -12,13 +12,227 @@ Platform assembly: C:\Users\Pierre\Documents\GitHub\Beer\program_Data\Managed\As
 Loading C:\Users\Pierre\Documents\GitHub\Beer\program_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Pierre\Documents\GitHub\Beer\program_Data\Managed\System.Drawing.dll (this message is harmless)
 Loading C:\Users\Pierre\Documents\GitHub\Beer\program_Data\Managed\System.Drawing.dll into Unity Child Domain
-- Completed reload, in  0.040 seconds
+- Completed reload, in  0.112 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-UnloadTime: 0.225845 ms
+UnloadTime: 0.262542 ms
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 150.
-Total: 0.541004 ms (FindLiveObjects: 0.005688 ms CreateObjectMapping: 0.005688 ms MarkObjects: 0.041812 ms  DeleteObjects: 0.030719 ms)
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 189.
+Total: 0.579129 ms (FindLiveObjects: 0.006257 ms CreateObjectMapping: 0.006257 ms MarkObjects: 0.040960 ms  DeleteObjects: 0.030151 ms)
+
+UnloadTime: 0.222720 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 240.
+Total: 0.521102 ms (FindLiveObjects: 0.006542 ms CreateObjectMapping: 0.006542 ms MarkObjects: 0.047502 ms  DeleteObjects: 0.007680 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CellarSlot..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for CellarSlot
+  at GameData..cctor () [0x00000] in <filename unknown>:0 
+Rethrow as TypeInitializationException: An exception was thrown by the type initializer for GameData
+
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32, Int32)
+ 
+(Filename:  Line: -1)
 
